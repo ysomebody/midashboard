@@ -87,7 +87,7 @@ class Build(object):
         return tab
 
 
-class DashboardRender:
+class DashboardServer:
     def __init__(self):
         self.refresh_interval_s = 120
         dashboard_data = Dashboard().read_data()
@@ -136,11 +136,11 @@ class DashboardRender:
         self.build.refresh(dashboard_data['build'])
         self.review.refresh(dashboard_data['review'])
 
-    def run_server(self):
+    def run(self):
         self.dash.run_server(debug=False, host='0.0.0.0')
 
 
 if __name__ == '__main__':
-    DashboardRender().run_server()
+    DashboardServer().run()
 
 
