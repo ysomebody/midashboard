@@ -5,6 +5,7 @@ from argo import get_installer_info
 from reviewboard import analyze_open_reviews
 import datetime
 
+
 class Dashboard:
     def __init__(self):
         config_filename = Path.home().joinpath('dashboard_config.json')
@@ -12,17 +13,14 @@ class Dashboard:
             self.config = json.load(f)
         self.data_filename = Path.home().joinpath('dashboard_data.json')
 
-
     def read_data(self):
         with open(self.data_filename) as f:
             return json.load(f)
-
 
     def update(self):
         dashboard_data = self._pull_data_from_servers()
         with open(self.data_filename, 'w') as f:
             f.write(json.dumps(dashboard_data, indent=4))
-
 
     def _pull_data_from_servers(self):
         build_data = [
@@ -42,6 +40,7 @@ class Dashboard:
             'build'      : build_data,
             'review'     : review_data
         }
+
 
 if __name__ == '__main__':
     dashboard = Dashboard()

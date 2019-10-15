@@ -2,8 +2,10 @@ from datetime import datetime
 from dashboard import Dashboard
 from urllib3 import disable_warnings, exceptions
 
+
 def log_with_timestamp(msg):
     print(f'[{datetime.now()}] {msg}')
+
 
 if __name__ == '__main__':
     disable_warnings(exceptions.InsecureRequestWarning)
