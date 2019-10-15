@@ -1,2 +1,3 @@
-pip>19.0.3
+pip>19
 wheel>0.33
+twine>2
