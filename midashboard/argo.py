@@ -83,7 +83,7 @@ def get_latest_master_installer_from_argoftp(ftp, relative_path):
         "installer_timestamp": latest_folder_info.time.strftime("%Y-%m-%d %H:%M:%S"),
         "installer_details"  :
             {
-                "version" : master_relative_path.rsplit('/', 1)[-1],
+                "version" : latest_folder_info.name,
                 "export" : relative_path_to_argo_path(latset_folder_relative_path)
             }
 
