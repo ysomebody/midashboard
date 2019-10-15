@@ -12,10 +12,11 @@ import deepdiff
 
 
 class Build(object):
-    def __init__(self):
+    def __init__(self, data):
         self.children = None
         self.data = {}
         self.product_per_row = 3
+        self.refresh(data)
 
     def refresh(self, new_data):
         print("Refreshing build")
@@ -88,14 +89,11 @@ class Build(object):
 
 class DashboardRender:
     def __init__(self):
+        self.refresh_interval_s = 120
         dashboard_data = Dashboard().read_data()
         dashboard_title = dashboard_data['title']
-        self.build = Build()
-        self.review = Review()
-        external_stylesheets = ['https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css']
-        self.app = dash.Dash(dashboard_title, external_stylesheets=external_stylesheets)
-        self.app.layout = self._serve_layout
-
+        self.build = Build(dashboard_data['build'])
+        self.review = Review(dashboard_data['review'])
         tab_style = {
             'borderBottom': '1px solid #d6d6d6',
             'fontWeight': 'bold',
@@ -108,30 +106,38 @@ class DashboardRender:
             'color': 'black',
             'fontWeight': 'bold'
         }
-        self.home = html.Div([
+        external_stylesheets = ['https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css']
+        self.dash = dash.Dash(dashboard_title, external_stylesheets=external_stylesheets)
+        self.dash.layout = html.Div([
             html.H1(children=dashboard_title, style={'textAlign': 'center'}),
             dcc.Tabs(id="tabs", value='tab-1', children=[
                 dcc.Tab(label='Build/Installer', value='tab-1', style=tab_style, selected_style=tab_selected_style),
-                dcc.Tab(label='Review', value='tab-2', style=tab_style, selected_style=tab_selected_style)
+                dcc.Tab(label='Review', value='tab-2', style=tab_style, selected_style=tab_selected_style),
             ]),
-            html.Div(id='tabs-content')
+            html.Div(id='tabs-content'),
+            dcc.Interval(
+                id='interval-component',
+                interval=self.refresh_interval_s * 1000,  # in milliseconds
+                n_intervals=0
+            )
         ], className='p-3 mb-2 bg-dark text-white')
 
-    def _serve_layout(self):
-        dashboard_data = Dashboard().read_data()
-        self.build.refresh(dashboard_data['build'])
-        self.review.refresh(dashboard_data['review'])
-        return self.home
-
-    def run_server(self):
-        @self.app.callback(Output('tabs-content', 'children'), [Input('tabs', 'value')])
-        def render_content(tab):
+        @self.dash.callback(Output('tabs-content', 'children'), [Input('tabs', 'value'), Input('interval-component', 'n_intervals')])
+        def update_dashboard(tab, n):
+            self._refresh_layout()
             if tab == 'tab-1':
                 return self.build.children
             elif tab == 'tab-2':
                 return self.review.children
 
-        self.app.run_server(debug=False, host='0.0.0.0')
+    def _refresh_layout(self):
+        print("refresh layout")
+        dashboard_data = Dashboard().read_data()
+        self.build.refresh(dashboard_data['build'])
+        self.review.refresh(dashboard_data['review'])
+
+    def run_server(self):
+        self.dash.run_server(debug=False, host='0.0.0.0')
 
 
 if __name__ == '__main__':

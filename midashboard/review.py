@@ -8,9 +8,10 @@ colors = ['red', 'Orange', 'Grey']
 
 
 class Review(object):
-    def __init__(self):
+    def __init__(self, data):
         self.children = None
         self.data = {}
+        self.refresh(data)
 
     def refresh(self, new_data):
         diff = deepdiff.DeepDiff(self.data, new_data)
