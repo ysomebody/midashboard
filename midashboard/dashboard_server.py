@@ -88,8 +88,8 @@ class Build(object):
 
 
 class DashboardServer:
-    def __init__(self):
-        self.refresh_interval_s = 120
+    def __init__(self, refresh_interval_min):
+        self.refresh_interval_min = refresh_interval_min
         dashboard_data = Dashboard().read_data()
         dashboard_title = dashboard_data['title']
         self.build = Build(dashboard_data['build'])
@@ -117,7 +117,7 @@ class DashboardServer:
             html.Div(id='tabs-content'),
             dcc.Interval(
                 id='interval-component',
-                interval=self.refresh_interval_s * 1000,  # in milliseconds
+                interval=self.refresh_interval_min * 60 * 1000,  # in milliseconds
                 n_intervals=0
             )
         ], className='p-3 mb-2 bg-dark text-white')
