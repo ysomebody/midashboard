@@ -7,9 +7,7 @@ def log_with_timestamp(msg):
     print(f'[{datetime.now()}] {msg}')
 
 
-if __name__ == '__main__':
-    disable_warnings(exceptions.InsecureRequestWarning)
-
+def dashboard_update():
     log_with_timestamp("Start to update dashboard.")
     dashboard = Dashboard()
     succeeded = False
@@ -26,3 +24,9 @@ if __name__ == '__main__':
         log_with_timestamp('Dashboard data updated.')
     else:
         log_with_timestamp(f'Dashboard data failed to update after {max_retry} retries.')
+
+
+if __name__ == '__main__':
+    disable_warnings(exceptions.InsecureRequestWarning)
+    dashboard_update()
+
