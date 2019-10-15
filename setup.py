@@ -5,13 +5,13 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="midashboard-ysomebody",
-    version="1.0.0",
+    version="1.0.0dev2",
     author="ysomebody",
     author_email="ysomebody@163.com",
     description="MI dashboard",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="http://www.ysomebody.info/d/",
+    url="https://github.com/ysomebody/midashboard",
     packages=setuptools.find_packages(),
     classifiers=[
         "Programming Language :: Python :: 3",
