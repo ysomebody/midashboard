@@ -1,3 +1,3 @@
-# MI dashbaord package
+# MI dashbaord
 
-This is MI dashbaord package.
+This is MI dashbaord.
