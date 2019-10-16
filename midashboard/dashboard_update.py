@@ -1,8 +1,11 @@
-from datetime import datetime
-from dashboard import Dashboard
-from urllib3 import disable_warnings, exceptions
+# -*- coding: utf-8 -*-
 import threading
 import time
+from datetime import datetime
+
+from urllib3 import disable_warnings, exceptions
+
+from .dashboard import Dashboard
 
 
 def log_with_timestamp(msg):

@@ -1,6 +1,9 @@
+# -*- coding: utf-8 -*-
 from ftplib import FTP
+
 from dateutil import parser
 from packaging import version
+
 
 class FileInfo:
 

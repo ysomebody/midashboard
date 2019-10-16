@@ -1,14 +1,16 @@
 # -*- coding: utf-8 -*-
+from datetime import datetime
+
 import dash
 import dash_core_components as dcc
 import dash_html_components as html
-import plotly.graph_objects as go
-from plotly.subplots import make_subplots
-from dash.dependencies import Input, Output
-from datetime import datetime
-from review import Review
-from dashboard import Dashboard
 import deepdiff
+import plotly.graph_objects as go
+from dash.dependencies import Input, Output
+from plotly.subplots import make_subplots
+
+from .dashboard import Dashboard
+from .review import Review
 
 
 class Build(object):

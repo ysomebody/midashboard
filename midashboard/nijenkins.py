@@ -1,7 +1,9 @@
-from jenkinsapi.jenkins import Jenkins
-import urllib3
+# -*- coding: utf-8 -*-
 import json
 import logging
+
+import urllib3
+from jenkinsapi.jenkins import Jenkins
 
 
 def get_nijenkins():

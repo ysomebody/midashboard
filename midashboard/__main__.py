@@ -1,5 +1,5 @@
-from dashboard_server import DashboardServer
-from dashboard_update import DashboardUpdater
+from .dashboard_server import DashboardServer
+from .dashboard_update import DashboardUpdater
 
 
 if __name__ == "__main__":

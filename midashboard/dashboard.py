@@ -1,9 +1,11 @@
+# -*- coding: utf-8 -*-
+import datetime
 import json
 from pathlib import Path
-from nijenkins import get_build_result
-from argo import get_installer_info
-from reviewboard import analyze_open_reviews
-import datetime
+
+from .argo import get_installer_info
+from .nijenkins import get_build_result
+from .reviewboard import analyze_open_reviews
 
 
 class Dashboard:

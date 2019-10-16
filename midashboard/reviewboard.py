@@ -1,9 +1,10 @@
 # -*- coding: utf-8 -*-
-from rbtools.api.client import RBClient
-from datetime import datetime
-from collections import Counter
 import math
 import re
+from collections import Counter
+from datetime import datetime
+
+from rbtools.api.client import RBClient
 
 user = 'hohuang'
 token = '7db9bd6a9db7d83855c9f42a87b80f99b069cc2e'
