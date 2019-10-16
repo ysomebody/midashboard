@@ -37,6 +37,10 @@ class Build(object):
         self.data = new_data
         return True
 
+    @staticmethod
+    def _get_title(title_text):
+        return dict(text=title_text, position='top center', font=dict(size=25))
+
     def _generate_pie_charts(self):
         self.product_per_row = 3
         rows = (len(self.data) - 1) // self.product_per_row + 1
@@ -45,8 +49,11 @@ class Build(object):
             rows=rows,
             cols=self.product_per_row,
             subplot_titles=[d['product'] for d in self.data],
+            vertical_spacing=0.1,
+            horizontal_spacing=0.1,
             print_grid=True,
             specs=[[{'type': 'domain'}] * self.product_per_row for i in range(rows)])
+        fig.update_layout(margin=dict(t=30, l=10, b=10, r=10), )
 
         row_index = 1
         col_index = 1
@@ -70,18 +77,17 @@ class Build(object):
             if col_index > self.product_per_row:
                 col_index = 1
                 row_index += 1
-        return dcc.Graph(figure=fig, style={'height': str(rows * 300) + 'px'})
+        return dcc.Graph(figure=fig)
 
     def _generate_installer_table(self):
         tab = html.Table(
             # Header
-            [html.Tr([html.Th('Product'), html.Th('Last Build Time'), html.Th('State'), html.Th('Export')])] +
+            [html.Tr([html.Th('Product'), html.Th('Last Installer Time'), html.Th('Export')])] +
 
             # Body
             [html.Tr([
                 html.Td(d['product']),
                 html.Td(d['installer_timestamp']),
-                html.Td('Good' if d['build_pass'] else 'Bad'),
                 html.Td(d['installer_details']['export'])
             ]) for d in self.data]
         )
@@ -96,27 +102,30 @@ class DashboardServer:
         dashboard_title = dashboard_data['title']
         self.build = Build(dashboard_data['build'])
         self.review = Review(dashboard_data['review'])
-        tab_style = {
-            'borderBottom': '1px solid #d6d6d6',
-            'fontWeight': 'bold',
-            'color': 'black'
-        }
-        tab_selected_style = {
-            'borderTop': '1px solid #d6d6d6',
-            'borderBottom': '1px solid #d6d6d6',
-            'backgroundColor': '#119DFF',
+
+        style = {
+            'backgroundColor': 'white',
             'color': 'black',
-            'fontWeight': 'bold'
+            'fontWeight': 'bold',
+            'text-align': 'center',
+            'font-size': '25px'
         }
         external_stylesheets = ['https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css']
         self.dash = dash.Dash(dashboard_title, external_stylesheets=external_stylesheets)
         self.dash.layout = html.Div([
             html.H1(children=dashboard_title, style={'textAlign': 'center'}),
-            dcc.Tabs(id="tabs", value='tab-1', children=[
-                dcc.Tab(label='Build/Installer', value='tab-1', style=tab_style, selected_style=tab_selected_style),
-                dcc.Tab(label='Review', value='tab-2', style=tab_style, selected_style=tab_selected_style),
-            ]),
-            html.Div(id='tabs-content'),
+            dcc.Dropdown(
+                id='dropdown',
+                options=[
+                    {'label': 'Build/Installer', 'value': '0'},
+                    {'label': 'Open Reviews', 'value': '1'}
+                ],
+                value='0',
+                optionHeight=40,
+                clearable=False,
+                style=style
+            ),
+            html.Div(id='dropdown-content'),
             dcc.Interval(
                 id='interval-component',
                 interval=self.refresh_interval_min * 60 * 1000,  # in milliseconds
@@ -124,12 +133,13 @@ class DashboardServer:
             )
         ], className='p-3 mb-2 bg-dark text-white')
 
-        @self.dash.callback(Output('tabs-content', 'children'), [Input('tabs', 'value'), Input('interval-component', 'n_intervals')])
-        def update_dashboard(tab, n):
+        @self.dash.callback(Output('dropdown-content', 'children'),
+                            [Input('dropdown', 'value'), Input('interval-component', 'n_intervals')])
+        def update_dashboard(dropdown_value, n_intervals):
             self._refresh_layout()
-            if tab == 'tab-1':
+            if dropdown_value == '0':
                 return self.build.children
-            elif tab == 'tab-2':
+            elif dropdown_value == '1':
                 return self.review.children
 
     def _refresh_layout(self):

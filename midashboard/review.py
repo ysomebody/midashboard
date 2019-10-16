@@ -13,46 +13,64 @@ class Review(object):
         self.data = {}
         self.refresh(data)
 
+    @staticmethod
+    def _get_title(title_text):
+        return dict(text=title_text, position='top center', font=dict(size=20))
+
     def refresh(self, new_data):
         diff = deepdiff.DeepDiff(self.data, new_data)
-        if len(diff) > 0:
-            self.data = new_data
-            fig1 = go.Figure(
-                data=[go.Pie(
-                    labels=[s['description'] for s in self.data["status"]],
-                    values=[s['count'] for s in self.data["status"]]
-                )])
+        if len(diff) == 0:
+            return
+        self.data = new_data
 
-            fig2 = go.Figure(
-                data=[go.Pie(
-                    labels=list(self.data["owners"].keys()),
-                    values=list(self.data["owners"].values())
-                )])
+        default_layout = dict(height=350, margin=dict(l=0, t=0, b=0))
 
-            fig1.update_traces(
-                hoverinfo='label+value', textinfo='value', textfont_size=20,
-                hole=0.5,
-                marker=dict(line=dict(color='#FFFFFF', width=2)))
+        overall_figure = go.Figure(
+            data=go.Pie(
+                title=self._get_title('Overall'),
+                labels=[s['description'] for s in self.data["status"]],
+                values=[s['count'] for s in self.data["status"]],
+                hoverinfo='label',
+                textinfo='value',
+                showlegend=True,
+                textfont_size=15,
+                pull=0.02
+            ),
+            layout={**default_layout, **dict(legend=dict(x=0.85))}
+        )
 
-            fig2.update_traces(
-                hoverinfo='label+value', textinfo='value', textfont_size=20,
-                hole=0.5,
-                marker=dict(line=dict(color='#FFFFFF', width=2)))
+        developers_figure = go.Figure(
+            data=go.Pie(
+                title=self._get_title('By developers'),
+                labels=list(self.data["owners"].keys()),
+                values=list(self.data["owners"].values()),
+                hoverinfo='label+value',
+                textinfo='value',
+                showlegend=True,
+                textfont_size=15,
+                pull=0.03
+            ),
+            layout=default_layout
+        )
 
-            xnames = self.data["duration"]['names']
-            duration_fig = go.Figure(data=[
+        xnames = self.data["duration"]['names']
+        duration_fig = go.Figure(
+            data=[
                 go.Bar(name=d['status'], x=xnames, y=d['values'], marker_color=c)
                 for c, d in zip(colors, self.data["duration"]['data'])
-            ])
+            ],
+            layout=default_layout
+        )
 
-            # Change the bar mode
-            duration_fig.update_layout(barmode='stack')
+        # Change the bar mode
+        duration_fig.update_layout(barmode='stack')
 
-            self.children = html.Div(children=[
-                html.Div(children=[
-                    dcc.Graph(figure=fig1, style={'height': '350px'}),
-                    dcc.Graph(figure=fig2, style={'height': '350px'})
-                ], style={'columnCount': 2, 'rowCount': 1}),
-                html.Div(children=[
-                    dcc.Graph(figure=duration_fig)])
-            ], style={'columnCount': 1, 'rowCount': 1}, className='p-3 mb-2 bg-white text-dark')
+        self.children = html.Div(children=[
+            html.Div(children=[
+                dcc.Graph(figure=overall_figure),
+                dcc.Graph(figure=developers_figure)
+            ], style={'columnCount': 2, 'rowCount': 1}),
+            html.Div(children=[
+                dcc.Graph(figure=duration_fig)])
+        ], style={'columnCount': 1, 'rowCount': 1}, className='p-3 mb-2 bg-white text-dark')
+
