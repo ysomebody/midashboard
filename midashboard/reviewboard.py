@@ -51,10 +51,10 @@ class ReviewRequestCount:
 
 class ReviewStatus:
     def __init__(self):
-        self.unresolved = ReviewRequestCount("With unresolved comments")
-        self.submitted = ReviewRequestCount("Code submitted")
-        self.pending_for_code_owner = ReviewRequestCount("Pending for code owners")
-        self.pending_for_internal = ReviewRequestCount("pending for internal reviewers")
+        self.unresolved = ReviewRequestCount("Unresolved")
+        self.submitted = ReviewRequestCount("Submitted")
+        self.pending_for_code_owner = ReviewRequestCount("Owner review")
+        self.pending_for_internal = ReviewRequestCount("Internal reviewer")
 
     def update(self, review):
         if review.open_issue_count > 0:
@@ -89,15 +89,15 @@ class ReviewDurations:
     def get_durations(self):
         data = [
             {
-                "status" : "With unresolved comments",
+                "status" : "Unresolved",
                 "values" : [x.unresolved.count for x in self.durations]
             },
             {
-                "status": "Pending for review",
+                "status": "Pending",
                 "values": [x.pending_for_code_owner.count + x.pending_for_internal.count for x in self.durations]
             },
             {
-                "status": "Code submitted",
+                "status": "Submitted",
                 "values": [x.submitted.count for x in self.durations]
             }
         ]
