@@ -40,7 +40,6 @@ class Review(object):
                 marker=dict(line=dict(color='#FFFFFF', width=2)))
 
             xnames = self.data["duration"]['names']
-
             duration_fig = go.Figure(data=[
                 go.Bar(name=d['status'], x=xnames, y=d['values'], marker_color=c)
                 for c, d in zip(colors, self.data["duration"]['data'])
@@ -51,7 +50,8 @@ class Review(object):
 
             self.children = html.Div(children=[
                 html.Div(children=[
-                    dcc.Graph(figure=fig1), dcc.Graph(figure=fig2)
+                    dcc.Graph(figure=fig1, style={'height': '350px'}),
+                    dcc.Graph(figure=fig2, style={'height': '350px'})
                 ], style={'columnCount': 2, 'rowCount': 1}),
                 html.Div(children=[
                     dcc.Graph(figure=duration_fig)])
