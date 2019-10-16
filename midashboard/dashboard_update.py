@@ -20,6 +20,7 @@ class DashboardUpdater(threading.Thread):
 
     def run(self):
         count = 0
+        disable_warnings(exceptions.InsecureRequestWarning)
         while True:
             self._dashboard_update()
             if self.max_updates > 0:
@@ -49,6 +50,5 @@ class DashboardUpdater(threading.Thread):
 
 
 if __name__ == '__main__':
-    disable_warnings(exceptions.InsecureRequestWarning)
     DashboardUpdater(interval_min=1, max_updates=2).start()
 

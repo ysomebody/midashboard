@@ -38,7 +38,7 @@ class Dashboard:
                                            review_config['devgroup'],
                                            review_config['ignore_tags'])
         return {
-            'title'      : review_config['title'],
+            'title'      : self.config['title'],
             'update_time': datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
             'build'      : build_data,
             'review'     : review_data
