@@ -14,10 +14,12 @@ def log_with_timestamp(msg):
 
 class DashboardTimer():
     def __init__(self, interval_min):
-        self.timer = Timer(interval_min * 60, self._dashboard_update)
+        self.interval_sec = interval_min * 60
+        self.timer = Timer(self.interval_sec, self._dashboard_update)
 
     def run(self):
         self.timer.run()
+        self.timer = Timer(self.interval_sec, self._dashboard_update)
 
     def cancel(self):
         self.timer.cancel()
@@ -61,5 +63,3 @@ class DashboardUpdater(Thread):
 
 if __name__ == '__main__':
     DashboardUpdater(interval_min=1).start()
-
-
