@@ -119,7 +119,7 @@ def get_review_status(review_list):
 
 
 def get_open_review_count_per_owner(review_list):
-    return dict(Counter([r.owner for r in review_list]))
+    return dict(Counter([r.owner for r in review_list if not r.is_submitted()]))
 
 
 def get_review_duration(review_list):
