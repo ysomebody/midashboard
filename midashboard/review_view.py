@@ -1,12 +1,11 @@
 # -*- coding: utf-8 -*-
 import dash_core_components as dcc
 import dash_html_components as html
-import deepdiff
 import plotly.graph_objects as go
 import json
 
 
-class Review(object):
+class ReviewView(object):
     def __init__(self, data):
         self.data = data
         self.default_layout = dict(height=350, margin=dict(l=0, t=0, b=0, r=0))
@@ -94,5 +93,5 @@ class Review(object):
 if __name__ == '__main__':
     with open(r'..\data\dashboard_data.json') as f:
         data = json.load(f)
-    r = Review(data['review'])
+    r = ReviewView(data['review'])
     r.get_overall_figure().write_html('test.html', auto_open=True)
