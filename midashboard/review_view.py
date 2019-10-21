@@ -15,9 +15,10 @@ class ReviewView(object):
         return dict(text=title_text, position='top center', font=dict(size=20))
 
     def get_overall_figure(self):
+        count = sum([int(s['count']) for s in self.data["status"]])
         return go.Figure(
             data=go.Pie(
-                title=self._get_title('Overall'),
+                title=self._get_title(f'{count} open reviews'),
                 labels=[s['description'] for s in self.data["status"]],
                 values=[s['count'] for s in self.data["status"]],
                 hoverinfo='label',
