@@ -8,7 +8,7 @@ import json
 class ReviewView(object):
     def __init__(self, data):
         self.data = data
-        self.default_layout = dict(height=350, margin=dict(l=0, t=0, b=0, r=0))
+        self.default_layout = dict(height=200, margin=dict(l=10, t=20, b=0, r=10))
 
     @staticmethod
     def _get_title(title_text):
@@ -34,8 +34,23 @@ class ReviewView(object):
         return go.Figure(
             data=go.Pie(
                 title=self._get_title('By developers'),
-                labels=list(self.data["owners"].keys()),
-                values=list(self.data["owners"].values()),
+                labels=list(self.data["developers"].keys()),
+                values=list(self.data["developers"].values()),
+                hoverinfo='label+value',
+                textinfo='value',
+                showlegend=True,
+                textfont_size=15,
+                pull=0.03
+            ),
+            layout=self.default_layout
+        )
+
+    def get_reviewers_figure(self):
+        return go.Figure(
+            data=go.Pie(
+                title=self._get_title('By reviewers'),
+                labels=list(self.data["reviewers"].keys()),
+                values=list(self.data["reviewers"].values()),
                 hoverinfo='label+value',
                 textinfo='value',
                 showlegend=True,
@@ -75,8 +90,13 @@ class ReviewView(object):
             children=[
                 html.Div(
                     children=[
-                        dcc.Graph(figure=self.get_overall_figure()),
-                        dcc.Graph(figure=self.get_developers_figure())
+                        dcc.Graph(figure=self.get_overall_figure())
+                    ]
+                ),
+                html.Div(
+                    children=[
+                        dcc.Graph(figure=self.get_developers_figure()),
+                        dcc.Graph(figure=self.get_reviewers_figure()),
                     ],
                     style={'columnCount': 2, 'rowCount': 1}
                 ),
