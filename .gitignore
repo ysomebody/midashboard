@@ -2,3 +2,4 @@
 /dist/
 /env/
 /midashboard_ysomebody.egg-info/
+/midashboard/*.html

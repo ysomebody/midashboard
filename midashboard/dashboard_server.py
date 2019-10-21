@@ -4,7 +4,6 @@ from datetime import datetime
 import dash
 import dash_core_components as dcc
 import dash_html_components as html
-import deepdiff
 import plotly.graph_objects as go
 from dash.dependencies import Input, Output
 from plotly.subplots import make_subplots
@@ -15,45 +14,33 @@ from .review import Review
 
 class Build(object):
     def __init__(self, data):
-        self.children = None
-        self.data = {}
-        self.product_per_row = 3
-        self.refresh(data)
+        self.data = data
 
     def refresh(self, new_data):
-        print("Refreshing build")
-        data_updated = self._update_data_if_changed(new_data)
-        if not data_updated:
-            return
-        self.children = [
-            html.Div([self._generate_pie_charts()]),
-            html.Div([self._generate_installer_table()])
-        ]
-
-    def _update_data_if_changed(self, new_data):
-        diff = deepdiff.DeepDiff(self.data, new_data)
-        if len(diff) == 0:
-            return False
         self.data = new_data
-        return True
+
+    def get_html(self):
+        return [
+            html.Div([dcc.Graph(figure=self.get_build_figure())]),
+            html.Div([self.get_installer_table()])
+        ]
 
     @staticmethod
     def _get_title(title_text):
         return dict(text=title_text, position='top center', font=dict(size=25))
 
-    def _generate_pie_charts(self):
-        self.product_per_row = 3
-        rows = (len(self.data) - 1) // self.product_per_row + 1
-
+    def get_build_figure(self):
+        product_per_row = 3
+        rows = (len(self.data) - 1) // product_per_row + 1
         fig = make_subplots(
             rows=rows,
-            cols=self.product_per_row,
+            cols=product_per_row,
             subplot_titles=[d['product'] for d in self.data],
             vertical_spacing=0.1,
             horizontal_spacing=0.1,
             print_grid=True,
-            specs=[[{'type': 'domain'}] * self.product_per_row for i in range(rows)])
-        fig.update_layout(margin=dict(t=30, l=10, b=10, r=10), )
+            specs=[[{'type': 'domain'}] * product_per_row for i in range(rows)])
+        fig.update_layout(margin=dict(t=30, l=10, b=10, r=10))
 
         row_index = 1
         col_index = 1
@@ -65,7 +52,7 @@ class Build(object):
                 go.Pie(
                     values=[1],
                     marker={'colors': ['#a3de83' if d['build_pass'] else '#FF4500']},
-                    text=[str(days) + ' days'],
+                    text=[f'{days} day' + ('s' if days != 1 else '')],
                     textinfo='text',
                     hoverinfo='text',
                     hovertext=['Latest Installer: ' + d['installer_details']['version']],
@@ -74,16 +61,20 @@ class Build(object):
                 row_index,
                 col_index)
             col_index += 1
-            if col_index > self.product_per_row:
+            if col_index > product_per_row:
                 col_index = 1
                 row_index += 1
-        return dcc.Graph(figure=fig)
+        return fig
 
-    def _generate_installer_table(self):
+    def get_installer_table(self):
         tab = html.Table(
             # Header
-            [html.Tr([html.Th('Product'), html.Th('Last Installer Time'), html.Th('Export')])] +
-
+            [html.Tr([
+                html.Th('Product'),
+                html.Th('Last Installer Time'),
+                html.Th('Export')]
+            )]
+            +
             # Body
             [html.Tr([
                 html.Td(d['product']),
@@ -136,17 +127,13 @@ class DashboardServer:
         @self.dash.callback(Output('dropdown-content', 'children'),
                             [Input('dropdown', 'value'), Input('interval-component', 'n_intervals')])
         def update_dashboard(dropdown_value, n_intervals):
-            self._refresh_layout()
+            dashboard_data = Dashboard().read_data()
             if dropdown_value == '0':
-                return self.build.children
+                self.build.refresh(dashboard_data['build'])
+                return self.build.get_html()
             elif dropdown_value == '1':
-                return self.review.children
-
-    def _refresh_layout(self):
-        print("refresh layout")
-        dashboard_data = Dashboard().read_data()
-        self.build.refresh(dashboard_data['build'])
-        self.review.refresh(dashboard_data['review'])
+                self.review.refresh(dashboard_data['review'])
+                return self.review.get_html()
 
     def run(self):
         self.dash.run_server(debug=False, host='0.0.0.0')

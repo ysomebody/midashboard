@@ -25,7 +25,6 @@ setuptools.setup(
         'packaging',
         'python-dateutil',
         'dash',
-        'deepdiff',
     ],
     python_requires='>=3.7',
 )
