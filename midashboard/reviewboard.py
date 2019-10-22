@@ -67,7 +67,7 @@ class ReviewRequestCounter:
 
 class ReviewOverallCounter:
     def __init__(self):
-        self.counter_names = ['Unresolved', 'Submitted', 'Owner review', 'Internal review']
+        self.counter_names = ['Unresolved', 'Internal review', 'Owner review', 'Submitted']
         self.counters = {name: ReviewRequestCounter(name) for name in self.counter_names}
 
     def add(self, review):

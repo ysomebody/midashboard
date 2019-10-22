@@ -345,6 +345,40 @@
                 ]
             },
             {
+                "description": "Internal review",
+                "count": 9,
+                "urls": [
+                    "https://review-board.natinst.com/r/314453/",
+                    "https://review-board.natinst.com/r/313902/",
+                    "https://review-board.natinst.com/r/314242/",
+                    "https://review-board.natinst.com/r/314057/",
+                    "https://review-board.natinst.com/r/313923/",
+                    "https://review-board.natinst.com/r/313925/",
+                    "https://review-board.natinst.com/r/313924/",
+                    "https://review-board.natinst.com/r/310739/",
+                    "https://review-board.natinst.com/r/314244/"
+                ]
+            },
+            {
+                "description": "Owner review",
+                "count": 13,
+                "urls": [
+                    "https://review-board.natinst.com/r/313880/",
+                    "https://review-board.natinst.com/r/313878/",
+                    "https://review-board.natinst.com/r/313879/",
+                    "https://review-board.natinst.com/r/313895/",
+                    "https://review-board.natinst.com/r/313914/",
+                    "https://review-board.natinst.com/r/313400/",
+                    "https://review-board.natinst.com/r/313416/",
+                    "https://review-board.natinst.com/r/311871/",
+                    "https://review-board.natinst.com/r/310932/",
+                    "https://review-board.natinst.com/r/310954/",
+                    "https://review-board.natinst.com/r/313725/",
+                    "https://review-board.natinst.com/r/310949/",
+                    "https://review-board.natinst.com/r/311119/"
+                ]
+            },
+            {
                 "description": "Submitted",
                 "count": 20,
                 "urls": [
@@ -368,40 +402,6 @@
                     "https://review-board.natinst.com/r/311699/",
                     "https://review-board.natinst.com/r/310736/",
                     "https://review-board.natinst.com/r/313417/"
-                ]
-            },
-            {
-                "description": "Owner review",
-                "count": 13,
-                "urls": [
-                    "https://review-board.natinst.com/r/313880/",
-                    "https://review-board.natinst.com/r/313878/",
-                    "https://review-board.natinst.com/r/313879/",
-                    "https://review-board.natinst.com/r/313895/",
-                    "https://review-board.natinst.com/r/313914/",
-                    "https://review-board.natinst.com/r/313400/",
-                    "https://review-board.natinst.com/r/313416/",
-                    "https://review-board.natinst.com/r/311871/",
-                    "https://review-board.natinst.com/r/310932/",
-                    "https://review-board.natinst.com/r/310954/",
-                    "https://review-board.natinst.com/r/313725/",
-                    "https://review-board.natinst.com/r/310949/",
-                    "https://review-board.natinst.com/r/311119/"
-                ]
-            },
-            {
-                "description": "Internal review",
-                "count": 9,
-                "urls": [
-                    "https://review-board.natinst.com/r/314453/",
-                    "https://review-board.natinst.com/r/313902/",
-                    "https://review-board.natinst.com/r/314242/",
-                    "https://review-board.natinst.com/r/314057/",
-                    "https://review-board.natinst.com/r/313923/",
-                    "https://review-board.natinst.com/r/313925/",
-                    "https://review-board.natinst.com/r/313924/",
-                    "https://review-board.natinst.com/r/310739/",
-                    "https://review-board.natinst.com/r/314244/"
                 ]
             }
         ],
@@ -493,41 +493,41 @@
                     ]
                 },
                 {
-                    "status": "Submitted",
+                    "status": "Internal review",
                     "values": [
-                        5,
                         1,
-                        0,
-                        0,
-                        0,
-                        0,
+                        2,
                         0,
                         0,
                         1,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
                         4,
                         0,
                         0,
                         0,
-                        2,
                         0,
                         0,
-                        7
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        1
                     ]
                 },
                 {
@@ -569,44 +569,45 @@
                     ]
                 },
                 {
-                    "status": "Internal review",
+                    "status": "Submitted",
                     "values": [
+                        5,
                         1,
-                        2,
+                        0,
+                        0,
+                        0,
+                        0,
                         0,
                         0,
                         1,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
                         4,
                         0,
                         0,
                         0,
+                        2,
                         0,
                         0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        1
+                        7
                     ]
                 }
             ]
         }
     }
+
 }

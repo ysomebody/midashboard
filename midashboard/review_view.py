@@ -9,8 +9,9 @@ class ReviewView(object):
     def __init__(self, data):
         self.data = data
         self.default_layout = dict(height=200, margin=dict(l=10, t=20, b=0, r=10))
-        # colors matching: unresolved, submitted, owner, internal
-        self.counter_colors = ['OrangeRed', 'Gray', 'SkyBlue', 'DarkOrange']
+        # colors matching: unresolved, internal, owner, submitted
+        self.counter_colors = ['OrangeRed', 'DarkOrange', 'Gray', 'SkyBlue']
+        self.people_colors = ['#FFCD24', '#2AABE4', '#9DC8E4', '#666B6E', '#FFC2BB', '#FF8883', '#BC4123', '#0B172A', '#463940', '#03393D']
 
     @staticmethod
     def _get_title(title_text):
@@ -46,7 +47,8 @@ class ReviewView(object):
                 textinfo='value',
                 showlegend=True,
                 textfont_size=15,
-                pull=0.03
+                pull=0.03,
+                marker_colors=self.people_colors,
             ),
             layout=self.default_layout
         )
@@ -61,7 +63,8 @@ class ReviewView(object):
                 textinfo='value',
                 showlegend=True,
                 textfont_size=15,
-                pull=0.03
+                pull=0.03,
+                marker_colors=self.people_colors,
             ),
             layout=self.default_layout
         )
@@ -119,4 +122,4 @@ if __name__ == '__main__':
     with open(r'..\data\dashboard_data.json') as f:
         data = json.load(f)
     r = ReviewView(data['review'])
-    r.get_overall_figure().write_html('test.html', auto_open=True)
+    r.get_developers_figure().write_html('test.html', auto_open=True)
