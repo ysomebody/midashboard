@@ -5,6 +5,7 @@ from collections import Counter
 from datetime import datetime
 
 from rbtools.api.client import RBClient
+import json
 
 user = 'hohuang'
 token = '7db9bd6a9db7d83855c9f42a87b80f99b069cc2e'
@@ -24,7 +25,6 @@ class RequestInfo:
         self.tag = "" if match is None else match.group(1)
         self.open_issue_count = request.issue_open_count
         self.duration_in_days = self._get_duration_in_days(request)
-        # self.reviewers = [target_reviewer.title for target_reviewer in request.target_people]
         self.review_groups = [target_group.title for target_group in request.target_groups if target_group.title != devgroup]
         self.reviewer_status = self._get_reviewer_status(request, code_owners)
         self.is_pending_for_code_owners = self._is_pending_for_code_owners(self.reviewer_status, self.review_groups)
@@ -54,8 +54,8 @@ class RequestInfo:
 
 
 class ReviewRequestCounter:
-    def __init__(self, description):
-        self.description = description
+    def __init__(self, name):
+        self.name = name
         self.reviews = []
         self.count = 0
 
@@ -67,55 +67,46 @@ class ReviewRequestCounter:
 
 class ReviewOverallCounter:
     def __init__(self):
-        self.unresolved = ReviewRequestCounter("Unresolved")
-        self.submitted = ReviewRequestCounter("Submitted")
-        self.pending_for_code_owner = ReviewRequestCounter("Owner review")
-        self.pending_for_internal = ReviewRequestCounter("Internal review")
+        self.counter_names = ['Unresolved', 'Submitted', 'Owner review', 'Internal review']
+        self.counters = {name: ReviewRequestCounter(name) for name in self.counter_names}
 
     def add(self, review):
         if review.open_issue_count > 0:
-            self.unresolved.add(review)
+            self.counters['Unresolved'].add(review)
         elif review.is_submitted():
-            self.submitted.add(review)
+            self.counters['Submitted'].add(review)
         elif review.is_pending_for_code_owners:
-            self.pending_for_code_owner.add(review)
+            self.counters['Owner review'].add(review)
         else:
-            self.pending_for_internal.add(review)
+            self.counters['Internal review'].add(review)
 
     def get_overall(self):
         return [
             {
-                "description": counter.description,
+                "description": counter.name,
                 "count"      : counter.count,
                 'urls'       : [review.url for review in counter.reviews]
             }
-            for counter in [self.unresolved, self.submitted, self.pending_for_code_owner, self.pending_for_internal]
+            for counter in self.counters.values()
         ]
 
 
-class ReviewDurationsCounter:
+class ReviewDurationsCounters:
     def __init__(self, max_days):
-        self.counters_per_day = [ReviewOverallCounter() for _ in range(max_days)]
+        self.counter_per_day = [ReviewOverallCounter() for _ in range(max_days)]
         self.names = ["1 day"] + [f'{x} days' for x in range(2, max_days + 1)]
 
     def add(self, review):
         days = math.ceil(review.duration_in_days)
-        self.counters_per_day[days - 1].add(review) # 0-based index
+        self.counter_per_day[days - 1].add(review) # 0-based index
 
     def get_durations(self):
         data = [
             {
-                "status" : "Unresolved",
-                "values" : [x.unresolved.count for x in self.counters_per_day]
-            },
-            {
-                "status": "Pending",
-                "values": [x.pending_for_code_owner.count + x.pending_for_internal.count for x in self.counters_per_day]
-            },
-            {
-                "status": "Submitted",
-                "values": [x.submitted.count for x in self.counters_per_day]
+                "status" : counter_name,
+                "values" : [overall_counter.counters[counter_name].count for overall_counter in self.counter_per_day]
             }
+            for counter_name in self.counter_per_day[0].counter_names
         ]
         return {"names" : self.names, "data" : data}
 
@@ -155,10 +146,10 @@ def get_open_review_count_per_reviewer(review_list, code_owners):
 
 
 def get_review_duration(review_list):
-    durations_counter = ReviewDurationsCounter(math.ceil(max([x.duration_in_days for x in review_list])))
+    durations_counters = ReviewDurationsCounters(math.ceil(max([x.duration_in_days for x in review_list])))
     for review in review_list:
-        durations_counter.add(review)
-    return durations_counter.get_durations()
+        durations_counters.add(review)
+    return durations_counters.get_durations()
 
 
 def brief_review_list(review_requests, code_owners, devgroup, ignore_tags):
@@ -180,5 +171,5 @@ def analyze_open_reviews(code_owners, devgroup, ignore_tags):
 
 if __name__ == '__main__':
     res = analyze_open_reviews(["mkirsch", "mlopez"], "nishmicoredriver", ["ATS"])
-    print(res)
+    print(json.dumps(res, indent=4))
 
