@@ -2,28 +2,28 @@
   "title": "NISH MI Core Driver Dashboard",
   "build": [
     {
-      "product": "NI-Digital 19.1",
-      "build": "https://nijenkins.amer.corp.natinst.com/view/MI/view/PatternBasedDigital/view/Build/view/master/",
-      "installer": "\\\\argo\\ni\\nipkg\\feeds\\ni-d\\ni-digital\\19.1.0"
+      "product": "NI-Digital",
+      "build": "https://nijenkins/view/MI/view/PatternBasedDigital/view/Build/view/master/",
+      "installer": "\\\\argo\\ni\\nipkg\\feeds\\ni-d\\ni-digital"
     },
     {
       "product": "NI-DCPower",
-      "build": "https://nijenkins.amer.corp.natinst.com/view/MI/view/DCPower/view/Build/view/Master/",
+      "build": "https://nijenkins/view/MI/view/DCPower/view/Build/view/Master/",
       "installer": "\\\\argo\\ni\\nipkg\\feeds\\ni-d\\ni-dcpower"
     },
     {
       "product": "NI-SCOPE",
-      "build": "https://nijenkins.amer.corp.natinst.com/view/MI/view/SCOPE/view/Build/view/master/",
+      "build": "https://nijenkins/view/MI/view/SCOPE/view/Build/view/master/",
       "installer": "\\\\argo\\ni\\nipkg\\feeds\\ni-s\\ni-scope"
     },
     {
       "product": "NI-Fgen",
-      "build": "https://nijenkins.amer.corp.natinst.com/view/MI/view/FGEN/view/Build/view/master/",
+      "build": "https://nijenkins/view/MI/view/FGEN/view/Build/view/master/",
       "installer": "\\\\argo\\ni\\nipkg\\feeds\\ni-f\\ni-fgen"
     },
     {
       "product": "NI-DMM",
-      "build": "https://nijenkins.amer.corp.natinst.com/view/MI/view/NI-DMM/view/Build/view/master/",
+      "build": "https://nijenkins/view/MI/view/NI-DMM/view/Build/view/master/",
       "installer": "\\\\argo\\ni\\nipkg\\feeds\\ni-d\\ni-dmm"
     }
   ],
