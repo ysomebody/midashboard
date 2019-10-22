@@ -9,6 +9,13 @@ from rbtools.api.client import RBClient
 user = 'hohuang'
 token = '7db9bd6a9db7d83855c9f42a87b80f99b069cc2e'
 
+
+class ReviewerStatus:
+    def __init__(self, name, has_shipit):
+        self.name = name
+        self.has_shipit = has_shipit
+
+
 class RequestInfo:
     def __init__(self, request, code_owners, devgroup):
         self.developer = request.links.submitter.title
@@ -17,9 +24,10 @@ class RequestInfo:
         self.tag = "" if match is None else match.group(1)
         self.open_issue_count = request.issue_open_count
         self.duration_in_days = self._get_duration_in_days(request)
-        self.reviewers = [target_reviewer.title for target_reviewer in request.target_people]
+        # self.reviewers = [target_reviewer.title for target_reviewer in request.target_people]
         self.review_groups = [target_group.title for target_group in request.target_groups if target_group.title != devgroup]
-        self.is_pending_for_code_owners = self._is_pending_for_code_owners(code_owners)
+        self.reviewer_status = self._get_reviewer_status(request, code_owners)
+        self.is_pending_for_code_owners = self._is_pending_for_code_owners(self.reviewer_status, self.review_groups)
 
     def is_submitted(self):
         return self.tag.casefold() == 'submitted'
@@ -30,9 +38,19 @@ class RequestInfo:
         request_time_added = datetime.strptime(request.time_added, '%Y-%m-%dT%H:%M:%SZ')
         return (current - request_time_added).total_seconds()/86400
 
-    def _is_pending_for_code_owners(self, code_owners):
-        is_code_owner_in_reviewers = not set(self.reviewers).isdisjoint(code_owners)
-        return is_code_owner_in_reviewers or len(self.review_groups) > 0
+    @staticmethod
+    def _get_reviewer_status(request, code_owners):
+        reviewer_status = []
+        reviewers = [reviewer.title for reviewer in request.target_people if reviewer.title in code_owners]
+        reviews = request.get_reviews()
+        for reviewer in reviewers:
+            has_shipit = any([r.ship_it for r in reviews if r.links.user.title == reviewer])
+            reviewer_status.append(ReviewerStatus(reviewer, has_shipit))
+        return reviewer_status
+
+    @staticmethod
+    def _is_pending_for_code_owners(reviewer_status, review_groups):
+        return len(reviewer_status) > 0 or len(review_groups) > 0
 
 
 class ReviewRequestCounter:
@@ -52,7 +70,7 @@ class ReviewOverallCounter:
         self.unresolved = ReviewRequestCounter("Unresolved")
         self.submitted = ReviewRequestCounter("Submitted")
         self.pending_for_code_owner = ReviewRequestCounter("Owner review")
-        self.pending_for_internal = ReviewRequestCounter("Internal reviewer")
+        self.pending_for_internal = ReviewRequestCounter("Internal review")
 
     def add(self, review):
         if review.open_issue_count > 0:
@@ -121,14 +139,15 @@ def get_open_review_count_per_developer(review_list):
 
 
 def get_open_review_count_per_reviewer(review_list, code_owners):
-    reviewer_counters = dict() # {reviewer : ReviewRequestCounter(reviewer)}
+    reviewer_counters = dict() # {name : ReviewRequestCounter(name)}
     for review in review_list:
-        for reviewer in review.reviewers:
-            if reviewer not in code_owners:
-                continue
-            if reviewer not in reviewer_counters:
-                reviewer_counters[reviewer] = ReviewRequestCounter(reviewer)
-            reviewer_counters[reviewer].add(review)
+        if review.open_issue_count > 0:
+            continue
+        for rs in review.reviewer_status:
+            if rs.name not in reviewer_counters:
+                reviewer_counters[rs.name] = ReviewRequestCounter(rs.name)
+            if not rs.has_shipit:
+                reviewer_counters[rs.name].add(review)
     review_count_per_reviewer = dict()
     for reviewer, counter in reviewer_counters.items():
         review_count_per_reviewer[reviewer] = counter.count
