@@ -10,7 +10,7 @@ class ReviewView(object):
         self.data = data
         self.default_layout = dict(height=200, margin=dict(l=10, t=20, b=0, r=10))
         # colors matching: unresolved, internal, owner, submitted
-        self.counter_colors = ['OrangeRed', 'DarkOrange', 'Gray', 'SkyBlue']
+        self.counter_colors = ['OrangeRed', 'DarkOrange', 'SkyBlue', 'Gray']
         self.people_colors = ['#FFCD24', '#2AABE4', '#9DC8E4', '#666B6E', '#FFC2BB', '#FF8883', '#BC4123', '#0B172A', '#463940', '#03393D']
 
     @staticmethod
