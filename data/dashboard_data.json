@@ -335,279 +335,1884 @@
         }
     ],
     "review": {
-        "status": [
-            {
-                "description": "Unresolved",
+        "Overall": {
+            "Unresolved": {
+                "count": 4,
+                "details": [
+                    {
+                        "developer": "zshen",
+                        "url": "https://review-board.natinst.com/r/315358/",
+                        "summary": "<rev> Optimize FullyQualifiedChannelResolver. If the repCap is the same as previous one, we don't need to resolve it again because previous result is stored in FullyQualifiedChannelResolver.",
+                        "open issues": 1,
+                        "days since last change": 1,
+                        "owner reviews": [
+                            {
+                                "reviewer": "mkirsch",
+                                "ship_it": false,
+                                "days since last comment": 737364
+                            }
+                        ]
+                    },
+                    {
+                        "developer": "mqiu",
+                        "url": "https://review-board.natinst.com/r/315708/",
+                        "summary": "<rev> Refine the constructor of PinMapInitializer to take in vector of std::string, rather than vector of const char*, this could save us some trouble to do the conversion when using this class.",
+                        "open issues": 1,
+                        "days since last change": 2,
+                        "owner reviews": []
+                    },
+                    {
+                        "developer": "zhwu",
+                        "url": "https://review-board.natinst.com/r/315527/",
+                        "summary": "[Feedback collect]<rev>This is a review to collect feedback about how to add .NET support for DCPower Channel Expansion and Unsync-operation feature. You can find summary in this file. For more details, you can refer to the discussion at \"DCPower .NET API\" channel in Teams.",
+                        "open issues": 1,
+                        "days since last change": 3,
+                        "owner reviews": [
+                            {
+                                "reviewer": "mkirsch",
+                                "ship_it": false,
+                                "days since last comment": 737364
+                            }
+                        ]
+                    },
+                    {
+                        "developer": "yijwu",
+                        "url": "https://review-board.natinst.com/r/313729/",
+                        "summary": "[Submitted] <rev> [1/4] Merge PinMap and MultiInstrumentPinMap into one class: make pinmaptools::PinMap class able to work with pinmap with multiple instruments",
+                        "open issues": 1,
+                        "days since last change": 4,
+                        "owner reviews": [
+                            {
+                                "reviewer": "mlopez",
+                                "ship_it": true,
+                                "days since last comment": 4
+                            }
+                        ]
+                    }
+                ]
+            },
+            "Submitted": {
+                "count": 18,
+                "details": [
+                    {
+                        "developer": "zhwu",
+                        "url": "https://review-board.natinst.com/r/311693/",
+                        "summary": "[submitted][.NET API]<rev>Add Control related xxxChannels APIs to NI-DCPower .NET API. We want to support channel-based operation for these APIs to Channel Expansion.",
+                        "open issues": 0,
+                        "days since last change": 1,
+                        "owner reviews": [
+                            {
+                                "reviewer": "thofler",
+                                "ship_it": false,
+                                "days since last comment": 737364
+                            },
+                            {
+                                "reviewer": "mkirsch",
+                                "ship_it": false,
+                                "days since last comment": 25
+                            }
+                        ]
+                    },
+                    {
+                        "developer": "zshen",
+                        "url": "https://review-board.natinst.com/r/311871/",
+                        "summary": "[Submitted] <rev> Ignore the error that thrown by closeChildSessions(). To call self-test, Self Calibrate and Reset Device for CXP sessions, we close the single channel child sessions and create new child sessions that are grouped by device.",
+                        "open issues": 0,
+                        "days since last change": 1,
+                        "owner reviews": [
+                            {
+                                "reviewer": "thofler",
+                                "ship_it": false,
+                                "days since last comment": 33
+                            },
+                            {
+                                "reviewer": "mkirsch",
+                                "ship_it": false,
+                                "days since last comment": 25
+                            }
+                        ]
+                    },
+                    {
+                        "developer": "zhwu",
+                        "url": "https://review-board.natinst.com/r/315179/",
+                        "summary": "[submitted][.NET API]<rev>Add GetChannelName, GetChannelNameString to NI-DCPower .NET API. They will be used by the unit test of other APIs, so I'd like to add them first before other APIs.",
+                        "open issues": 0,
+                        "days since last change": 1,
+                        "owner reviews": [
+                            {
+                                "reviewer": "thofler",
+                                "ship_it": false,
+                                "days since last comment": 737364
+                            },
+                            {
+                                "reviewer": "mkirsch",
+                                "ship_it": false,
+                                "days since last comment": 737364
+                            }
+                        ]
+                    },
+                    {
+                        "developer": "mqiu",
+                        "url": "https://review-board.natinst.com/r/315536/",
+                        "summary": "[Submitted]<rev> Rename the numChannels to numberOfChannels",
+                        "open issues": 0,
+                        "days since last change": 1,
+                        "owner reviews": [
+                            {
+                                "reviewer": "mlopez",
+                                "ship_it": false,
+                                "days since last comment": 737364
+                            }
+                        ]
+                    },
+                    {
+                        "developer": "yijwu",
+                        "url": "https://review-board.natinst.com/r/314987/",
+                        "summary": "[Submitted] <rev> [4/4] Merge PinMap and MultiInstrumentPinMap into one class: add new error code to pinmaptools",
+                        "open issues": 0,
+                        "days since last change": 4,
+                        "owner reviews": [
+                            {
+                                "reviewer": "mlopez",
+                                "ship_it": true,
+                                "days since last comment": 4
+                            }
+                        ]
+                    },
+                    {
+                        "developer": "chyuan",
+                        "url": "https://review-board.natinst.com/r/314811/",
+                        "summary": "[Submitted] <rev> [3/3] Change to use a factory to create ImporterExporter when calling import/export functions of Session: Remove setImporterExporter() from Session.h.mako and Session.cpp.mako",
+                        "open issues": 0,
+                        "days since last change": 2,
+                        "owner reviews": [
+                            {
+                                "reviewer": "mkirsch",
+                                "ship_it": false,
+                                "days since last comment": 737364
+                            }
+                        ]
+                    },
+                    {
+                        "developer": "chyuan",
+                        "url": "https://review-board.natinst.com/r/314809/",
+                        "summary": "[Submitted] <rev> [1/3] Change to use a factory to create ImporterExporter when calling import/export functions of Session: Add ImporterExporterFactory to niScopeCXP.",
+                        "open issues": 0,
+                        "days since last change": 2,
+                        "owner reviews": [
+                            {
+                                "reviewer": "mkirsch",
+                                "ship_it": false,
+                                "days since last comment": 8
+                            }
+                        ]
+                    },
+                    {
+                        "developer": "chyuan",
+                        "url": "https://review-board.natinst.com/r/314810/",
+                        "summary": "[Submitted] <rev> [2/3] Change to use a factory to create ImporterExporter when calling import/export functions of Session: Add ImporterExporterFactory to nidcpowerCXP.",
+                        "open issues": 0,
+                        "days since last change": 2,
+                        "owner reviews": [
+                            {
+                                "reviewer": "thofler",
+                                "ship_it": false,
+                                "days since last comment": 737364
+                            },
+                            {
+                                "reviewer": "mkirsch",
+                                "ship_it": false,
+                                "days since last comment": 737364
+                            }
+                        ]
+                    },
+                    {
+                        "developer": "zhwu",
+                        "url": "https://review-board.natinst.com/r/315178/",
+                        "summary": "[submitted][.NET API]<rev>Add all channel-based APIs to internal implementation. I'd like to put them together.",
+                        "open issues": 0,
+                        "days since last change": 2,
+                        "owner reviews": [
+                            {
+                                "reviewer": "thofler",
+                                "ship_it": false,
+                                "days since last comment": 737364
+                            },
+                            {
+                                "reviewer": "mkirsch",
+                                "ship_it": false,
+                                "days since last comment": 737364
+                            }
+                        ]
+                    },
+                    {
+                        "developer": "yuxwang",
+                        "url": "https://review-board.natinst.com/r/314813/",
+                        "summary": "[submitted]<rev> Clean up the implementation of HramCache private method \"cacheHramPins\".",
+                        "open issues": 0,
+                        "days since last change": 3,
+                        "owner reviews": [
+                            {
+                                "reviewer": "mkirsch",
+                                "ship_it": false,
+                                "days since last comment": 737364
+                            },
+                            {
+                                "reviewer": "mlopez",
+                                "ship_it": false,
+                                "days since last comment": 737364
+                            }
+                        ]
+                    },
+                    {
+                        "developer": "yuxwang",
+                        "url": "https://review-board.natinst.com/r/315188/",
+                        "summary": "[submitted]<rev> [1/2] Encapsulate the logic for parsing HRAM pin list: merge two functions in PinMapExpertInterface to one which is used to parse HRAM pin list.",
+                        "open issues": 0,
+                        "days since last change": 3,
+                        "owner reviews": [
+                            {
+                                "reviewer": "mkirsch",
+                                "ship_it": false,
+                                "days since last comment": 737364
+                            },
+                            {
+                                "reviewer": "mlopez",
+                                "ship_it": false,
+                                "days since last comment": 737364
+                            }
+                        ]
+                    },
+                    {
+                        "developer": "yuxwang",
+                        "url": "https://review-board.natinst.com/r/315189/",
+                        "summary": "[submitted]<rev> [2/2] Encapsulate the logic for parsing HRAM pin list: retrofit the implementation of PinMapExpert and its unit tests because of interface changes in Part1.",
+                        "open issues": 0,
+                        "days since last change": 3,
+                        "owner reviews": [
+                            {
+                                "reviewer": "mkirsch",
+                                "ship_it": false,
+                                "days since last comment": 737364
+                            },
+                            {
+                                "reviewer": "mlopez",
+                                "ship_it": false,
+                                "days since last comment": 737364
+                            }
+                        ]
+                    },
+                    {
+                        "developer": "yuxwang",
+                        "url": "https://review-board.natinst.com/r/314807/",
+                        "summary": "[submitted]<rev> Clean up the implementation of HramCache public method \"initialize\".",
+                        "open issues": 0,
+                        "days since last change": 3,
+                        "owner reviews": [
+                            {
+                                "reviewer": "mkirsch",
+                                "ship_it": false,
+                                "days since last comment": 737364
+                            },
+                            {
+                                "reviewer": "mlopez",
+                                "ship_it": false,
+                                "days since last comment": 737364
+                            }
+                        ]
+                    },
+                    {
+                        "developer": "yijwu",
+                        "url": "https://review-board.natinst.com/r/313725/",
+                        "summary": "[Submitted] <rev> [2/4] Merge PinMap and MultiInstrumentPinMap into one class: retrofit niDigitalPB",
+                        "open issues": 0,
+                        "days since last change": 4,
+                        "owner reviews": [
+                            {
+                                "reviewer": "mlopez",
+                                "ship_it": true,
+                                "days since last comment": 5
+                            }
+                        ]
+                    },
+                    {
+                        "developer": "yijwu",
+                        "url": "https://review-board.natinst.com/r/313727/",
+                        "summary": "[Submitted] <rev> [3/4] Merge PinMap and MultiInstrumentPinMap into one class: retrofit niDigitalCXP",
+                        "open issues": 0,
+                        "days since last change": 4,
+                        "owner reviews": [
+                            {
+                                "reviewer": "mlopez",
+                                "ship_it": true,
+                                "days since last comment": 5
+                            }
+                        ]
+                    },
+                    {
+                        "developer": "huazhan",
+                        "url": "https://review-board.natinst.com/r/310949/",
+                        "summary": "[Submitted] <rev>[Part 4/4] Enable out of process debugging for session created by initialize with independent channels: Add shared utility functions to handle remoteDebugOptionsString.",
+                        "open issues": 0,
+                        "days since last change": 8,
+                        "owner reviews": [
+                            {
+                                "reviewer": "thofler",
+                                "ship_it": false,
+                                "days since last comment": 737364
+                            },
+                            {
+                                "reviewer": "mkirsch",
+                                "ship_it": false,
+                                "days since last comment": 737364
+                            }
+                        ]
+                    },
+                    {
+                        "developer": "yuxwang",
+                        "url": "https://review-board.natinst.com/r/314256/",
+                        "summary": "[submitted]<rev> [2/2] Clean up HramCache interface: retrofit HramCache implementation because of interface changes in Part1.",
+                        "open issues": 0,
+                        "days since last change": 11,
+                        "owner reviews": [
+                            {
+                                "reviewer": "mkirsch",
+                                "ship_it": false,
+                                "days since last comment": 737364
+                            },
+                            {
+                                "reviewer": "mlopez",
+                                "ship_it": false,
+                                "days since last comment": 9
+                            }
+                        ]
+                    },
+                    {
+                        "developer": "yuxwang",
+                        "url": "https://review-board.natinst.com/r/314587/",
+                        "summary": "[submitted]<rev> To follow our code convention: rename \"siteNum\" to \"siteNumber\" and change the type to \"uint32_t\" in HramCache class.",
+                        "open issues": 0,
+                        "days since last change": 10,
+                        "owner reviews": [
+                            {
+                                "reviewer": "mkirsch",
+                                "ship_it": false,
+                                "days since last comment": 737364
+                            },
+                            {
+                                "reviewer": "mlopez",
+                                "ship_it": true,
+                                "days since last comment": 9
+                            }
+                        ]
+                    }
+                ]
+            },
+            "Internal": {
                 "count": 2,
-                "urls": [
-                    "https://review-board.natinst.com/r/313729/",
-                    "https://review-board.natinst.com/r/313727/"
+                "details": [
+                    {
+                        "developer": "zshen",
+                        "url": "https://review-board.natinst.com/r/315695/",
+                        "summary": "<rev> [1/2] Let client choose if it need to reset when initialize child sessions each time openChildSessions() is called.",
+                        "open issues": 0,
+                        "days since last change": 1,
+                        "owner reviews": []
+                    },
+                    {
+                        "developer": "zshen",
+                        "url": "https://review-board.natinst.com/r/315707/",
+                        "summary": "<rev> [2/2] Let client choose if it need to reset when initialize child sessions each time openChildSessions() is called.",
+                        "open issues": 0,
+                        "days since last change": 1,
+                        "owner reviews": []
+                    }
                 ]
             },
-            {
-                "description": "Internal review",
-                "count": 9,
-                "urls": [
-                    "https://review-board.natinst.com/r/314453/",
-                    "https://review-board.natinst.com/r/313902/",
-                    "https://review-board.natinst.com/r/314242/",
-                    "https://review-board.natinst.com/r/314057/",
-                    "https://review-board.natinst.com/r/313923/",
-                    "https://review-board.natinst.com/r/313925/",
-                    "https://review-board.natinst.com/r/313924/",
-                    "https://review-board.natinst.com/r/310739/",
-                    "https://review-board.natinst.com/r/314244/"
-                ]
-            },
-            {
-                "description": "Owner review",
-                "count": 13,
-                "urls": [
-                    "https://review-board.natinst.com/r/313880/",
-                    "https://review-board.natinst.com/r/313878/",
-                    "https://review-board.natinst.com/r/313879/",
-                    "https://review-board.natinst.com/r/313895/",
-                    "https://review-board.natinst.com/r/313914/",
-                    "https://review-board.natinst.com/r/313400/",
-                    "https://review-board.natinst.com/r/313416/",
-                    "https://review-board.natinst.com/r/311871/",
-                    "https://review-board.natinst.com/r/310932/",
-                    "https://review-board.natinst.com/r/310954/",
-                    "https://review-board.natinst.com/r/313725/",
-                    "https://review-board.natinst.com/r/310949/",
-                    "https://review-board.natinst.com/r/311119/"
-                ]
-            },
-            {
-                "description": "Submitted",
-                "count": 20,
-                "urls": [
-                    "https://review-board.natinst.com/r/314443/",
-                    "https://review-board.natinst.com/r/314256/",
-                    "https://review-board.natinst.com/r/314435/",
-                    "https://review-board.natinst.com/r/314436/",
-                    "https://review-board.natinst.com/r/311686/",
-                    "https://review-board.natinst.com/r/311698/",
-                    "https://review-board.natinst.com/r/314257/",
-                    "https://review-board.natinst.com/r/314240/",
-                    "https://review-board.natinst.com/r/310733/",
-                    "https://review-board.natinst.com/r/310732/",
-                    "https://review-board.natinst.com/r/310731/",
-                    "https://review-board.natinst.com/r/310738/",
-                    "https://review-board.natinst.com/r/310737/",
-                    "https://review-board.natinst.com/r/310923/",
-                    "https://review-board.natinst.com/r/310729/",
-                    "https://review-board.natinst.com/r/311701/",
-                    "https://review-board.natinst.com/r/310922/",
-                    "https://review-board.natinst.com/r/311699/",
-                    "https://review-board.natinst.com/r/310736/",
-                    "https://review-board.natinst.com/r/313417/"
+            "Code Owner": {
+                "count": 19,
+                "details": [
+                    {
+                        "developer": "mqiu",
+                        "url": "https://review-board.natinst.com/r/314057/",
+                        "summary": "<rev> Add error elaboration in AutoSession when initializing/closing child session fails.",
+                        "open issues": 0,
+                        "days since last change": 2,
+                        "owner reviews": [
+                            {
+                                "reviewer": "mkirsch",
+                                "ship_it": false,
+                                "days since last comment": 737364
+                            }
+                        ]
+                    },
+                    {
+                        "developer": "chyuan",
+                        "url": "https://review-board.natinst.com/r/313925/",
+                        "summary": "<rev> [3/3] Export correct global attribute value when the attribute is set in both single point mode and advanced sequence: apply to nidcpowerCXP.",
+                        "open issues": 0,
+                        "days since last change": 2,
+                        "owner reviews": [
+                            {
+                                "reviewer": "thofler",
+                                "ship_it": false,
+                                "days since last comment": 737364
+                            },
+                            {
+                                "reviewer": "mkirsch",
+                                "ship_it": false,
+                                "days since last comment": 737364
+                            }
+                        ]
+                    },
+                    {
+                        "developer": "chyuan",
+                        "url": "https://review-board.natinst.com/r/313924/",
+                        "summary": "<rev> [2/3] Export correct global attribute value when the attribute is set in both single point mode and advanced sequence: add dcpowerCXP-specific ImporterExporter.",
+                        "open issues": 0,
+                        "days since last change": 2,
+                        "owner reviews": [
+                            {
+                                "reviewer": "thofler",
+                                "ship_it": false,
+                                "days since last comment": 737364
+                            },
+                            {
+                                "reviewer": "mkirsch",
+                                "ship_it": false,
+                                "days since last comment": 737364
+                            }
+                        ]
+                    },
+                    {
+                        "developer": "chyuan",
+                        "url": "https://review-board.natinst.com/r/313923/",
+                        "summary": "<rev> [1/3] Export correct global attribute value when the attribute is set in both single point mode and advanced sequence: add dcpowerCXP-specific AttributeFacade and AttributeFacadeFactory.",
+                        "open issues": 0,
+                        "days since last change": 2,
+                        "owner reviews": [
+                            {
+                                "reviewer": "thofler",
+                                "ship_it": false,
+                                "days since last comment": 737364
+                            },
+                            {
+                                "reviewer": "mkirsch",
+                                "ship_it": false,
+                                "days since last comment": 737364
+                            }
+                        ]
+                    },
+                    {
+                        "developer": "chyuan",
+                        "url": "https://review-board.natinst.com/r/313880/",
+                        "summary": "<rev> [4/4] Add AdvancedSequenceAccessor for nidcpowerCXP and access to nidcpowerPAL/titan plugins: add entry points and AdvancedSequenceAccessorAPI in titan_plugin.",
+                        "open issues": 0,
+                        "days since last change": 2,
+                        "owner reviews": [
+                            {
+                                "reviewer": "thofler",
+                                "ship_it": false,
+                                "days since last comment": 737364
+                            },
+                            {
+                                "reviewer": "mkirsch",
+                                "ship_it": false,
+                                "days since last comment": 737364
+                            }
+                        ]
+                    },
+                    {
+                        "developer": "chyuan",
+                        "url": "https://review-board.natinst.com/r/313879/",
+                        "summary": "<rev> [3/4] Add AdvancedSequenceAccessor for nidcpowerCXP and access to nidcpowerPAL/titan plugins: update entry points in nidcpowerPAL.",
+                        "open issues": 0,
+                        "days since last change": 2,
+                        "owner reviews": [
+                            {
+                                "reviewer": "thofler",
+                                "ship_it": false,
+                                "days since last comment": 737364
+                            },
+                            {
+                                "reviewer": "mkirsch",
+                                "ship_it": false,
+                                "days since last comment": 737364
+                            }
+                        ]
+                    },
+                    {
+                        "developer": "chyuan",
+                        "url": "https://review-board.natinst.com/r/313878/",
+                        "summary": "<rev> [2/4] Add AdvancedSequenceAccessor for nidcpowerCXP and access to nidcpowerPAL/titan plugins: declare entry points.",
+                        "open issues": 0,
+                        "days since last change": 2,
+                        "owner reviews": [
+                            {
+                                "reviewer": "thofler",
+                                "ship_it": false,
+                                "days since last comment": 737364
+                            },
+                            {
+                                "reviewer": "mkirsch",
+                                "ship_it": false,
+                                "days since last comment": 737364
+                            }
+                        ]
+                    },
+                    {
+                        "developer": "chyuan",
+                        "url": "https://review-board.natinst.com/r/313895/",
+                        "summary": "<rev> [1/4] Add AdvancedSequenceAccessor for nidcpowerCXP and access to nidcpowerPAL/titan plugins: add to nidcpowerCXP.",
+                        "open issues": 0,
+                        "days since last change": 2,
+                        "owner reviews": [
+                            {
+                                "reviewer": "thofler",
+                                "ship_it": false,
+                                "days since last comment": 737364
+                            },
+                            {
+                                "reviewer": "mkirsch",
+                                "ship_it": false,
+                                "days since last comment": 4
+                            }
+                        ]
+                    },
+                    {
+                        "developer": "yuxwang",
+                        "url": "https://review-board.natinst.com/r/314613/",
+                        "summary": "<rev> [2/2] Add unit tests for HRAM handcoded functions: retrofit HramCache implementaion and tests because of the interface changes in Part1.",
+                        "open issues": 0,
+                        "days since last change": 2,
+                        "owner reviews": [
+                            {
+                                "reviewer": "mkirsch",
+                                "ship_it": false,
+                                "days since last comment": 737364
+                            },
+                            {
+                                "reviewer": "mlopez",
+                                "ship_it": false,
+                                "days since last comment": 737364
+                            }
+                        ]
+                    },
+                    {
+                        "developer": "yuxwang",
+                        "url": "https://review-board.natinst.com/r/314612/",
+                        "summary": "<rev> [1/2] Add unit tests for HRAM handcoded functions: refine the HRAM handcoded functions with unit tests.",
+                        "open issues": 0,
+                        "days since last change": 2,
+                        "owner reviews": [
+                            {
+                                "reviewer": "mkirsch",
+                                "ship_it": false,
+                                "days since last comment": 737364
+                            },
+                            {
+                                "reviewer": "mlopez",
+                                "ship_it": false,
+                                "days since last comment": 737364
+                            }
+                        ]
+                    },
+                    {
+                        "developer": "zhwu",
+                        "url": "https://review-board.natinst.com/r/313883/",
+                        "summary": "[.NET API]<rev>Add Software Trigger related xxxWithChannels APIs to NI-DCPower .NET API. We want to support channel-based operation for these APIs to Channel Expansion.",
+                        "open issues": 0,
+                        "days since last change": 4,
+                        "owner reviews": [
+                            {
+                                "reviewer": "thofler",
+                                "ship_it": false,
+                                "days since last comment": 737364
+                            },
+                            {
+                                "reviewer": "mkirsch",
+                                "ship_it": false,
+                                "days since last comment": 737364
+                            }
+                        ]
+                    },
+                    {
+                        "developer": "huazhan",
+                        "url": "https://review-board.natinst.com/r/315365/",
+                        "summary": "<rev> Remove outdated TODO.",
+                        "open issues": 0,
+                        "days since last change": 3,
+                        "owner reviews": [
+                            {
+                                "reviewer": "thofler",
+                                "ship_it": false,
+                                "days since last comment": 737364
+                            },
+                            {
+                                "reviewer": "mkirsch",
+                                "ship_it": false,
+                                "days since last comment": 737364
+                            }
+                        ]
+                    },
+                    {
+                        "developer": "zhwu",
+                        "url": "https://review-board.natinst.com/r/315171/",
+                        "summary": "[.NET API]<rev>Codegen the functions in nidcpowerPrivate.h, since we want to add .NET support for GetSessionState which stays in that file.",
+                        "open issues": 0,
+                        "days since last change": 4,
+                        "owner reviews": [
+                            {
+                                "reviewer": "thofler",
+                                "ship_it": false,
+                                "days since last comment": 737364
+                            },
+                            {
+                                "reviewer": "mkirsch",
+                                "ship_it": false,
+                                "days since last comment": 737364
+                            }
+                        ]
+                    },
+                    {
+                        "developer": "zhwu",
+                        "url": "https://review-board.natinst.com/r/313886/",
+                        "summary": "[.NET API]<rev>Add Digital Trigger related xxxWithChannels APIs to NI-DCPower .NET API. We want to support channel-based operation for these APIs to Channel Expansion.",
+                        "open issues": 0,
+                        "days since last change": 4,
+                        "owner reviews": [
+                            {
+                                "reviewer": "thofler",
+                                "ship_it": false,
+                                "days since last comment": 737364
+                            },
+                            {
+                                "reviewer": "mkirsch",
+                                "ship_it": false,
+                                "days since last comment": 737364
+                            }
+                        ]
+                    },
+                    {
+                        "developer": "huazhan",
+                        "url": "https://review-board.natinst.com/r/315347/",
+                        "summary": "<rev> Fix a bug of PAL device that host session cann't restore to running state if debug session requests privilege after host session initiated.",
+                        "open issues": 0,
+                        "days since last change": 3,
+                        "owner reviews": [
+                            {
+                                "reviewer": "thofler",
+                                "ship_it": false,
+                                "days since last comment": 737364
+                            },
+                            {
+                                "reviewer": "mkirsch",
+                                "ship_it": false,
+                                "days since last comment": 4
+                            }
+                        ]
+                    },
+                    {
+                        "developer": "zhwu",
+                        "url": "https://review-board.natinst.com/r/314994/",
+                        "summary": "<rev>Move DiscoverCurrentRanges and GetNextInstructionSequence from nidcpowerPrivate.h to nidcpowerLV.h, since these functions use lvdatacov, which should stay in nidcpowerLV.h.",
+                        "open issues": 0,
+                        "days since last change": 8,
+                        "owner reviews": [
+                            {
+                                "reviewer": "thofler",
+                                "ship_it": false,
+                                "days since last comment": 737364
+                            },
+                            {
+                                "reviewer": "mkirsch",
+                                "ship_it": false,
+                                "days since last comment": 737364
+                            }
+                        ]
+                    },
+                    {
+                        "developer": "mqiu",
+                        "url": "https://review-board.natinst.com/r/313902/",
+                        "summary": "<rev> [1/2] single source the error handling for cxp plugin's LV init() and close(): Add two utility macros in cxp.",
+                        "open issues": 0,
+                        "days since last change": 5,
+                        "owner reviews": [
+                            {
+                                "reviewer": "mkirsch",
+                                "ship_it": false,
+                                "days since last comment": 737364
+                            }
+                        ]
+                    },
+                    {
+                        "developer": "mqiu",
+                        "url": "https://review-board.natinst.com/r/314787/",
+                        "summary": "<rev>[2/2] Single source the error handling for cxp plugin's LV init() and close(): Retrofit niDigitalCXP, nidcpowerCXP, niScopeCXP to apply the new macros in cxp for LV entry points.",
+                        "open issues": 0,
+                        "days since last change": 8,
+                        "owner reviews": [
+                            {
+                                "reviewer": "mkirsch",
+                                "ship_it": false,
+                                "days since last comment": 737364
+                            }
+                        ]
+                    },
+                    {
+                        "developer": "huazhan",
+                        "url": "https://review-board.natinst.com/r/313914/",
+                        "summary": "<rev> Implement niDCPowerCXP_GetLiveMeasurements. This function has a parameter \"void* reserved\", which is difficult to code-gen based on currently implementation of mergers. There's no way to write a new merger to support this parameter, when we don't know the size of  \"void* reserved\".",
+                        "open issues": 0,
+                        "days since last change": 11,
+                        "owner reviews": [
+                            {
+                                "reviewer": "thofler",
+                                "ship_it": false,
+                                "days since last comment": 737364
+                            },
+                            {
+                                "reviewer": "mkirsch",
+                                "ship_it": false,
+                                "days since last comment": 737364
+                            }
+                        ]
+                    }
                 ]
             }
-        ],
-        "developers": {
-            "chyuan": 7,
-            "mqiu": 5,
-            "huazhan": 5,
-            "yijwu": 3,
-            "zshen": 3,
-            "yiqwang": 1
         },
-        "reviewers": {
-            "mkirsch": 18,
-            "mlopez": 7
+        "Unresolved Reviews": {
+            "zshen": {
+                "count": 1,
+                "details": [
+                    {
+                        "developer": "zshen",
+                        "url": "https://review-board.natinst.com/r/315358/",
+                        "summary": "<rev> Optimize FullyQualifiedChannelResolver. If the repCap is the same as previous one, we don't need to resolve it again because previous result is stored in FullyQualifiedChannelResolver.",
+                        "open issues": 1,
+                        "days since last change": 1,
+                        "owner reviews": [
+                            {
+                                "reviewer": "mkirsch",
+                                "ship_it": false,
+                                "days since last comment": 737364
+                            }
+                        ]
+                    }
+                ]
+            },
+            "mqiu": {
+                "count": 1,
+                "details": [
+                    {
+                        "developer": "mqiu",
+                        "url": "https://review-board.natinst.com/r/315708/",
+                        "summary": "<rev> Refine the constructor of PinMapInitializer to take in vector of std::string, rather than vector of const char*, this could save us some trouble to do the conversion when using this class.",
+                        "open issues": 1,
+                        "days since last change": 2,
+                        "owner reviews": []
+                    }
+                ]
+            },
+            "zhwu": {
+                "count": 1,
+                "details": [
+                    {
+                        "developer": "zhwu",
+                        "url": "https://review-board.natinst.com/r/315527/",
+                        "summary": "[Feedback collect]<rev>This is a review to collect feedback about how to add .NET support for DCPower Channel Expansion and Unsync-operation feature. You can find summary in this file. For more details, you can refer to the discussion at \"DCPower .NET API\" channel in Teams.",
+                        "open issues": 1,
+                        "days since last change": 3,
+                        "owner reviews": [
+                            {
+                                "reviewer": "mkirsch",
+                                "ship_it": false,
+                                "days since last comment": 737364
+                            }
+                        ]
+                    }
+                ]
+            },
+            "yijwu": {
+                "count": 1,
+                "details": [
+                    {
+                        "developer": "yijwu",
+                        "url": "https://review-board.natinst.com/r/313729/",
+                        "summary": "[Submitted] <rev> [1/4] Merge PinMap and MultiInstrumentPinMap into one class: make pinmaptools::PinMap class able to work with pinmap with multiple instruments",
+                        "open issues": 1,
+                        "days since last change": 4,
+                        "owner reviews": [
+                            {
+                                "reviewer": "mlopez",
+                                "ship_it": true,
+                                "days since last comment": 4
+                            }
+                        ]
+                    }
+                ]
+            }
         },
-        "duration": {
-            "names": [
-                "1 day",
-                "2 days",
-                "3 days",
-                "4 days",
-                "5 days",
-                "6 days",
-                "7 days",
-                "8 days",
-                "9 days",
-                "10 days",
-                "11 days",
-                "12 days",
-                "13 days",
-                "14 days",
-                "15 days",
-                "16 days",
-                "17 days",
-                "18 days",
-                "19 days",
-                "20 days",
-                "21 days",
-                "22 days",
-                "23 days",
-                "24 days",
-                "25 days",
-                "26 days",
-                "27 days",
-                "28 days",
-                "29 days",
-                "30 days",
-                "31 days",
-                "32 days",
-                "33 days"
-            ],
-            "data": [
-                {
-                    "status": "Unresolved",
-                    "values": [
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        2,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0
+        "Inactive Reviews": {
+            "thofler": {
+                "count": 3,
+                "details": [
+                    {
+                        "developer": "zhwu",
+                        "url": "https://review-board.natinst.com/r/314994/",
+                        "summary": "<rev>Move DiscoverCurrentRanges and GetNextInstructionSequence from nidcpowerPrivate.h to nidcpowerLV.h, since these functions use lvdatacov, which should stay in nidcpowerLV.h.",
+                        "open issues": 0,
+                        "days since last change": 8,
+                        "owner reviews": [
+                            {
+                                "reviewer": "thofler",
+                                "ship_it": false,
+                                "days since last comment": 737364
+                            },
+                            {
+                                "reviewer": "mkirsch",
+                                "ship_it": false,
+                                "days since last comment": 737364
+                            }
+                        ]
+                    },
+                    {
+                        "developer": "huazhan",
+                        "url": "https://review-board.natinst.com/r/310949/",
+                        "summary": "[Submitted] <rev>[Part 4/4] Enable out of process debugging for session created by initialize with independent channels: Add shared utility functions to handle remoteDebugOptionsString.",
+                        "open issues": 0,
+                        "days since last change": 8,
+                        "owner reviews": [
+                            {
+                                "reviewer": "thofler",
+                                "ship_it": false,
+                                "days since last comment": 737364
+                            },
+                            {
+                                "reviewer": "mkirsch",
+                                "ship_it": false,
+                                "days since last comment": 737364
+                            }
+                        ]
+                    },
+                    {
+                        "developer": "huazhan",
+                        "url": "https://review-board.natinst.com/r/313914/",
+                        "summary": "<rev> Implement niDCPowerCXP_GetLiveMeasurements. This function has a parameter \"void* reserved\", which is difficult to code-gen based on currently implementation of mergers. There's no way to write a new merger to support this parameter, when we don't know the size of  \"void* reserved\".",
+                        "open issues": 0,
+                        "days since last change": 11,
+                        "owner reviews": [
+                            {
+                                "reviewer": "thofler",
+                                "ship_it": false,
+                                "days since last comment": 737364
+                            },
+                            {
+                                "reviewer": "mkirsch",
+                                "ship_it": false,
+                                "days since last comment": 737364
+                            }
+                        ]
+                    }
+                ]
+            },
+            "mkirsch": {
+                "count": 6,
+                "details": [
+                    {
+                        "developer": "zhwu",
+                        "url": "https://review-board.natinst.com/r/314994/",
+                        "summary": "<rev>Move DiscoverCurrentRanges and GetNextInstructionSequence from nidcpowerPrivate.h to nidcpowerLV.h, since these functions use lvdatacov, which should stay in nidcpowerLV.h.",
+                        "open issues": 0,
+                        "days since last change": 8,
+                        "owner reviews": [
+                            {
+                                "reviewer": "thofler",
+                                "ship_it": false,
+                                "days since last comment": 737364
+                            },
+                            {
+                                "reviewer": "mkirsch",
+                                "ship_it": false,
+                                "days since last comment": 737364
+                            }
+                        ]
+                    },
+                    {
+                        "developer": "mqiu",
+                        "url": "https://review-board.natinst.com/r/314787/",
+                        "summary": "<rev>[2/2] Single source the error handling for cxp plugin's LV init() and close(): Retrofit niDigitalCXP, nidcpowerCXP, niScopeCXP to apply the new macros in cxp for LV entry points.",
+                        "open issues": 0,
+                        "days since last change": 8,
+                        "owner reviews": [
+                            {
+                                "reviewer": "mkirsch",
+                                "ship_it": false,
+                                "days since last comment": 737364
+                            }
+                        ]
+                    },
+                    {
+                        "developer": "huazhan",
+                        "url": "https://review-board.natinst.com/r/310949/",
+                        "summary": "[Submitted] <rev>[Part 4/4] Enable out of process debugging for session created by initialize with independent channels: Add shared utility functions to handle remoteDebugOptionsString.",
+                        "open issues": 0,
+                        "days since last change": 8,
+                        "owner reviews": [
+                            {
+                                "reviewer": "thofler",
+                                "ship_it": false,
+                                "days since last comment": 737364
+                            },
+                            {
+                                "reviewer": "mkirsch",
+                                "ship_it": false,
+                                "days since last comment": 737364
+                            }
+                        ]
+                    },
+                    {
+                        "developer": "huazhan",
+                        "url": "https://review-board.natinst.com/r/313914/",
+                        "summary": "<rev> Implement niDCPowerCXP_GetLiveMeasurements. This function has a parameter \"void* reserved\", which is difficult to code-gen based on currently implementation of mergers. There's no way to write a new merger to support this parameter, when we don't know the size of  \"void* reserved\".",
+                        "open issues": 0,
+                        "days since last change": 11,
+                        "owner reviews": [
+                            {
+                                "reviewer": "thofler",
+                                "ship_it": false,
+                                "days since last comment": 737364
+                            },
+                            {
+                                "reviewer": "mkirsch",
+                                "ship_it": false,
+                                "days since last comment": 737364
+                            }
+                        ]
+                    },
+                    {
+                        "developer": "yuxwang",
+                        "url": "https://review-board.natinst.com/r/314256/",
+                        "summary": "[submitted]<rev> [2/2] Clean up HramCache interface: retrofit HramCache implementation because of interface changes in Part1.",
+                        "open issues": 0,
+                        "days since last change": 11,
+                        "owner reviews": [
+                            {
+                                "reviewer": "mkirsch",
+                                "ship_it": false,
+                                "days since last comment": 737364
+                            },
+                            {
+                                "reviewer": "mlopez",
+                                "ship_it": false,
+                                "days since last comment": 9
+                            }
+                        ]
+                    },
+                    {
+                        "developer": "yuxwang",
+                        "url": "https://review-board.natinst.com/r/314587/",
+                        "summary": "[submitted]<rev> To follow our code convention: rename \"siteNum\" to \"siteNumber\" and change the type to \"uint32_t\" in HramCache class.",
+                        "open issues": 0,
+                        "days since last change": 10,
+                        "owner reviews": [
+                            {
+                                "reviewer": "mkirsch",
+                                "ship_it": false,
+                                "days since last comment": 737364
+                            },
+                            {
+                                "reviewer": "mlopez",
+                                "ship_it": true,
+                                "days since last comment": 9
+                            }
+                        ]
+                    }
+                ]
+            },
+            "mlopez": {
+                "count": 1,
+                "details": [
+                    {
+                        "developer": "yuxwang",
+                        "url": "https://review-board.natinst.com/r/314256/",
+                        "summary": "[submitted]<rev> [2/2] Clean up HramCache interface: retrofit HramCache implementation because of interface changes in Part1.",
+                        "open issues": 0,
+                        "days since last change": 11,
+                        "owner reviews": [
+                            {
+                                "reviewer": "mkirsch",
+                                "ship_it": false,
+                                "days since last comment": 737364
+                            },
+                            {
+                                "reviewer": "mlopez",
+                                "ship_it": false,
+                                "days since last comment": 9
+                            }
+                        ]
+                    }
+                ]
+            }
+        },
+        "Days Since Posted": {
+            "3": {
+                "Unresolved": {
+                    "count": 1,
+                    "details": [
+                        {
+                            "developer": "zshen",
+                            "url": "https://review-board.natinst.com/r/315358/",
+                            "summary": "<rev> Optimize FullyQualifiedChannelResolver. If the repCap is the same as previous one, we don't need to resolve it again because previous result is stored in FullyQualifiedChannelResolver.",
+                            "open issues": 1,
+                            "days since last change": 1,
+                            "owner reviews": [
+                                {
+                                    "reviewer": "mkirsch",
+                                    "ship_it": false,
+                                    "days since last comment": 737364
+                                }
+                            ]
+                        }
                     ]
                 },
-                {
-                    "status": "Internal review",
-                    "values": [
-                        1,
-                        2,
-                        0,
-                        0,
-                        1,
-                        4,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        1
-                    ]
-                },
-                {
-                    "status": "Owner review",
-                    "values": [
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        6,
-                        0,
-                        0,
-                        2,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        1,
-                        0,
-                        0,
-                        0,
-                        0,
-                        1,
-                        3,
-                        0,
-                        0,
-                        0
-                    ]
-                },
-                {
-                    "status": "Submitted",
-                    "values": [
-                        5,
-                        1,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        1,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        4,
-                        0,
-                        0,
-                        0,
-                        2,
-                        0,
-                        0,
-                        7
+                "Code Owner": {
+                    "count": 2,
+                    "details": [
+                        {
+                            "developer": "huazhan",
+                            "url": "https://review-board.natinst.com/r/315365/",
+                            "summary": "<rev> Remove outdated TODO.",
+                            "open issues": 0,
+                            "days since last change": 3,
+                            "owner reviews": [
+                                {
+                                    "reviewer": "thofler",
+                                    "ship_it": false,
+                                    "days since last comment": 737364
+                                },
+                                {
+                                    "reviewer": "mkirsch",
+                                    "ship_it": false,
+                                    "days since last comment": 737364
+                                }
+                            ]
+                        },
+                        {
+                            "developer": "huazhan",
+                            "url": "https://review-board.natinst.com/r/315347/",
+                            "summary": "<rev> Fix a bug of PAL device that host session cann't restore to running state if debug session requests privilege after host session initiated.",
+                            "open issues": 0,
+                            "days since last change": 3,
+                            "owner reviews": [
+                                {
+                                    "reviewer": "thofler",
+                                    "ship_it": false,
+                                    "days since last comment": 737364
+                                },
+                                {
+                                    "reviewer": "mkirsch",
+                                    "ship_it": false,
+                                    "days since last comment": 4
+                                }
+                            ]
+                        }
                     ]
                 }
-            ]
+            },
+            "35": {
+                "Submitted": {
+                    "count": 1,
+                    "details": [
+                        {
+                            "developer": "zhwu",
+                            "url": "https://review-board.natinst.com/r/311693/",
+                            "summary": "[submitted][.NET API]<rev>Add Control related xxxChannels APIs to NI-DCPower .NET API. We want to support channel-based operation for these APIs to Channel Expansion.",
+                            "open issues": 0,
+                            "days since last change": 1,
+                            "owner reviews": [
+                                {
+                                    "reviewer": "thofler",
+                                    "ship_it": false,
+                                    "days since last comment": 737364
+                                },
+                                {
+                                    "reviewer": "mkirsch",
+                                    "ship_it": false,
+                                    "days since last comment": 25
+                                }
+                            ]
+                        }
+                    ]
+                }
+            },
+            "1": {
+                "Internal": {
+                    "count": 2,
+                    "details": [
+                        {
+                            "developer": "zshen",
+                            "url": "https://review-board.natinst.com/r/315695/",
+                            "summary": "<rev> [1/2] Let client choose if it need to reset when initialize child sessions each time openChildSessions() is called.",
+                            "open issues": 0,
+                            "days since last change": 1,
+                            "owner reviews": []
+                        },
+                        {
+                            "developer": "zshen",
+                            "url": "https://review-board.natinst.com/r/315707/",
+                            "summary": "<rev> [2/2] Let client choose if it need to reset when initialize child sessions each time openChildSessions() is called.",
+                            "open issues": 0,
+                            "days since last change": 1,
+                            "owner reviews": []
+                        }
+                    ]
+                },
+                "Unresolved": {
+                    "count": 1,
+                    "details": [
+                        {
+                            "developer": "mqiu",
+                            "url": "https://review-board.natinst.com/r/315708/",
+                            "summary": "<rev> Refine the constructor of PinMapInitializer to take in vector of std::string, rather than vector of const char*, this could save us some trouble to do the conversion when using this class.",
+                            "open issues": 1,
+                            "days since last change": 2,
+                            "owner reviews": []
+                        }
+                    ]
+                }
+            },
+            "33": {
+                "Submitted": {
+                    "count": 1,
+                    "details": [
+                        {
+                            "developer": "zshen",
+                            "url": "https://review-board.natinst.com/r/311871/",
+                            "summary": "[Submitted] <rev> Ignore the error that thrown by closeChildSessions(). To call self-test, Self Calibrate and Reset Device for CXP sessions, we close the single channel child sessions and create new child sessions that are grouped by device.",
+                            "open issues": 0,
+                            "days since last change": 1,
+                            "owner reviews": [
+                                {
+                                    "reviewer": "thofler",
+                                    "ship_it": false,
+                                    "days since last comment": 33
+                                },
+                                {
+                                    "reviewer": "mkirsch",
+                                    "ship_it": false,
+                                    "days since last comment": 25
+                                }
+                            ]
+                        }
+                    ]
+                }
+            },
+            "4": {
+                "Submitted": {
+                    "count": 5,
+                    "details": [
+                        {
+                            "developer": "zhwu",
+                            "url": "https://review-board.natinst.com/r/315179/",
+                            "summary": "[submitted][.NET API]<rev>Add GetChannelName, GetChannelNameString to NI-DCPower .NET API. They will be used by the unit test of other APIs, so I'd like to add them first before other APIs.",
+                            "open issues": 0,
+                            "days since last change": 1,
+                            "owner reviews": [
+                                {
+                                    "reviewer": "thofler",
+                                    "ship_it": false,
+                                    "days since last comment": 737364
+                                },
+                                {
+                                    "reviewer": "mkirsch",
+                                    "ship_it": false,
+                                    "days since last comment": 737364
+                                }
+                            ]
+                        },
+                        {
+                            "developer": "yijwu",
+                            "url": "https://review-board.natinst.com/r/314987/",
+                            "summary": "[Submitted] <rev> [4/4] Merge PinMap and MultiInstrumentPinMap into one class: add new error code to pinmaptools",
+                            "open issues": 0,
+                            "days since last change": 4,
+                            "owner reviews": [
+                                {
+                                    "reviewer": "mlopez",
+                                    "ship_it": true,
+                                    "days since last comment": 4
+                                }
+                            ]
+                        },
+                        {
+                            "developer": "zhwu",
+                            "url": "https://review-board.natinst.com/r/315178/",
+                            "summary": "[submitted][.NET API]<rev>Add all channel-based APIs to internal implementation. I'd like to put them together.",
+                            "open issues": 0,
+                            "days since last change": 2,
+                            "owner reviews": [
+                                {
+                                    "reviewer": "thofler",
+                                    "ship_it": false,
+                                    "days since last comment": 737364
+                                },
+                                {
+                                    "reviewer": "mkirsch",
+                                    "ship_it": false,
+                                    "days since last comment": 737364
+                                }
+                            ]
+                        },
+                        {
+                            "developer": "yuxwang",
+                            "url": "https://review-board.natinst.com/r/315188/",
+                            "summary": "[submitted]<rev> [1/2] Encapsulate the logic for parsing HRAM pin list: merge two functions in PinMapExpertInterface to one which is used to parse HRAM pin list.",
+                            "open issues": 0,
+                            "days since last change": 3,
+                            "owner reviews": [
+                                {
+                                    "reviewer": "mkirsch",
+                                    "ship_it": false,
+                                    "days since last comment": 737364
+                                },
+                                {
+                                    "reviewer": "mlopez",
+                                    "ship_it": false,
+                                    "days since last comment": 737364
+                                }
+                            ]
+                        },
+                        {
+                            "developer": "yuxwang",
+                            "url": "https://review-board.natinst.com/r/315189/",
+                            "summary": "[submitted]<rev> [2/2] Encapsulate the logic for parsing HRAM pin list: retrofit the implementation of PinMapExpert and its unit tests because of interface changes in Part1.",
+                            "open issues": 0,
+                            "days since last change": 3,
+                            "owner reviews": [
+                                {
+                                    "reviewer": "mkirsch",
+                                    "ship_it": false,
+                                    "days since last comment": 737364
+                                },
+                                {
+                                    "reviewer": "mlopez",
+                                    "ship_it": false,
+                                    "days since last comment": 737364
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "Code Owner": {
+                    "count": 1,
+                    "details": [
+                        {
+                            "developer": "zhwu",
+                            "url": "https://review-board.natinst.com/r/315171/",
+                            "summary": "[.NET API]<rev>Codegen the functions in nidcpowerPrivate.h, since we want to add .NET support for GetSessionState which stays in that file.",
+                            "open issues": 0,
+                            "days since last change": 4,
+                            "owner reviews": [
+                                {
+                                    "reviewer": "thofler",
+                                    "ship_it": false,
+                                    "days since last comment": 737364
+                                },
+                                {
+                                    "reviewer": "mkirsch",
+                                    "ship_it": false,
+                                    "days since last comment": 737364
+                                }
+                            ]
+                        }
+                    ]
+                }
+            },
+            "2": {
+                "Submitted": {
+                    "count": 1,
+                    "details": [
+                        {
+                            "developer": "mqiu",
+                            "url": "https://review-board.natinst.com/r/315536/",
+                            "summary": "[Submitted]<rev> Rename the numChannels to numberOfChannels",
+                            "open issues": 0,
+                            "days since last change": 1,
+                            "owner reviews": [
+                                {
+                                    "reviewer": "mlopez",
+                                    "ship_it": false,
+                                    "days since last comment": 737364
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "Unresolved": {
+                    "count": 1,
+                    "details": [
+                        {
+                            "developer": "zhwu",
+                            "url": "https://review-board.natinst.com/r/315527/",
+                            "summary": "[Feedback collect]<rev>This is a review to collect feedback about how to add .NET support for DCPower Channel Expansion and Unsync-operation feature. You can find summary in this file. For more details, you can refer to the discussion at \"DCPower .NET API\" channel in Teams.",
+                            "open issues": 1,
+                            "days since last change": 3,
+                            "owner reviews": [
+                                {
+                                    "reviewer": "mkirsch",
+                                    "ship_it": false,
+                                    "days since last comment": 737364
+                                }
+                            ]
+                        }
+                    ]
+                }
+            },
+            "14": {
+                "Code Owner": {
+                    "count": 1,
+                    "details": [
+                        {
+                            "developer": "mqiu",
+                            "url": "https://review-board.natinst.com/r/314057/",
+                            "summary": "<rev> Add error elaboration in AutoSession when initializing/closing child session fails.",
+                            "open issues": 0,
+                            "days since last change": 2,
+                            "owner reviews": [
+                                {
+                                    "reviewer": "mkirsch",
+                                    "ship_it": false,
+                                    "days since last comment": 737364
+                                }
+                            ]
+                        }
+                    ]
+                }
+            },
+            "15": {
+                "Code Owner": {
+                    "count": 11,
+                    "details": [
+                        {
+                            "developer": "chyuan",
+                            "url": "https://review-board.natinst.com/r/313925/",
+                            "summary": "<rev> [3/3] Export correct global attribute value when the attribute is set in both single point mode and advanced sequence: apply to nidcpowerCXP.",
+                            "open issues": 0,
+                            "days since last change": 2,
+                            "owner reviews": [
+                                {
+                                    "reviewer": "thofler",
+                                    "ship_it": false,
+                                    "days since last comment": 737364
+                                },
+                                {
+                                    "reviewer": "mkirsch",
+                                    "ship_it": false,
+                                    "days since last comment": 737364
+                                }
+                            ]
+                        },
+                        {
+                            "developer": "chyuan",
+                            "url": "https://review-board.natinst.com/r/313924/",
+                            "summary": "<rev> [2/3] Export correct global attribute value when the attribute is set in both single point mode and advanced sequence: add dcpowerCXP-specific ImporterExporter.",
+                            "open issues": 0,
+                            "days since last change": 2,
+                            "owner reviews": [
+                                {
+                                    "reviewer": "thofler",
+                                    "ship_it": false,
+                                    "days since last comment": 737364
+                                },
+                                {
+                                    "reviewer": "mkirsch",
+                                    "ship_it": false,
+                                    "days since last comment": 737364
+                                }
+                            ]
+                        },
+                        {
+                            "developer": "chyuan",
+                            "url": "https://review-board.natinst.com/r/313923/",
+                            "summary": "<rev> [1/3] Export correct global attribute value when the attribute is set in both single point mode and advanced sequence: add dcpowerCXP-specific AttributeFacade and AttributeFacadeFactory.",
+                            "open issues": 0,
+                            "days since last change": 2,
+                            "owner reviews": [
+                                {
+                                    "reviewer": "thofler",
+                                    "ship_it": false,
+                                    "days since last comment": 737364
+                                },
+                                {
+                                    "reviewer": "mkirsch",
+                                    "ship_it": false,
+                                    "days since last comment": 737364
+                                }
+                            ]
+                        },
+                        {
+                            "developer": "chyuan",
+                            "url": "https://review-board.natinst.com/r/313880/",
+                            "summary": "<rev> [4/4] Add AdvancedSequenceAccessor for nidcpowerCXP and access to nidcpowerPAL/titan plugins: add entry points and AdvancedSequenceAccessorAPI in titan_plugin.",
+                            "open issues": 0,
+                            "days since last change": 2,
+                            "owner reviews": [
+                                {
+                                    "reviewer": "thofler",
+                                    "ship_it": false,
+                                    "days since last comment": 737364
+                                },
+                                {
+                                    "reviewer": "mkirsch",
+                                    "ship_it": false,
+                                    "days since last comment": 737364
+                                }
+                            ]
+                        },
+                        {
+                            "developer": "chyuan",
+                            "url": "https://review-board.natinst.com/r/313879/",
+                            "summary": "<rev> [3/4] Add AdvancedSequenceAccessor for nidcpowerCXP and access to nidcpowerPAL/titan plugins: update entry points in nidcpowerPAL.",
+                            "open issues": 0,
+                            "days since last change": 2,
+                            "owner reviews": [
+                                {
+                                    "reviewer": "thofler",
+                                    "ship_it": false,
+                                    "days since last comment": 737364
+                                },
+                                {
+                                    "reviewer": "mkirsch",
+                                    "ship_it": false,
+                                    "days since last comment": 737364
+                                }
+                            ]
+                        },
+                        {
+                            "developer": "chyuan",
+                            "url": "https://review-board.natinst.com/r/313878/",
+                            "summary": "<rev> [2/4] Add AdvancedSequenceAccessor for nidcpowerCXP and access to nidcpowerPAL/titan plugins: declare entry points.",
+                            "open issues": 0,
+                            "days since last change": 2,
+                            "owner reviews": [
+                                {
+                                    "reviewer": "thofler",
+                                    "ship_it": false,
+                                    "days since last comment": 737364
+                                },
+                                {
+                                    "reviewer": "mkirsch",
+                                    "ship_it": false,
+                                    "days since last comment": 737364
+                                }
+                            ]
+                        },
+                        {
+                            "developer": "chyuan",
+                            "url": "https://review-board.natinst.com/r/313895/",
+                            "summary": "<rev> [1/4] Add AdvancedSequenceAccessor for nidcpowerCXP and access to nidcpowerPAL/titan plugins: add to nidcpowerCXP.",
+                            "open issues": 0,
+                            "days since last change": 2,
+                            "owner reviews": [
+                                {
+                                    "reviewer": "thofler",
+                                    "ship_it": false,
+                                    "days since last comment": 737364
+                                },
+                                {
+                                    "reviewer": "mkirsch",
+                                    "ship_it": false,
+                                    "days since last comment": 4
+                                }
+                            ]
+                        },
+                        {
+                            "developer": "zhwu",
+                            "url": "https://review-board.natinst.com/r/313883/",
+                            "summary": "[.NET API]<rev>Add Software Trigger related xxxWithChannels APIs to NI-DCPower .NET API. We want to support channel-based operation for these APIs to Channel Expansion.",
+                            "open issues": 0,
+                            "days since last change": 4,
+                            "owner reviews": [
+                                {
+                                    "reviewer": "thofler",
+                                    "ship_it": false,
+                                    "days since last comment": 737364
+                                },
+                                {
+                                    "reviewer": "mkirsch",
+                                    "ship_it": false,
+                                    "days since last comment": 737364
+                                }
+                            ]
+                        },
+                        {
+                            "developer": "zhwu",
+                            "url": "https://review-board.natinst.com/r/313886/",
+                            "summary": "[.NET API]<rev>Add Digital Trigger related xxxWithChannels APIs to NI-DCPower .NET API. We want to support channel-based operation for these APIs to Channel Expansion.",
+                            "open issues": 0,
+                            "days since last change": 4,
+                            "owner reviews": [
+                                {
+                                    "reviewer": "thofler",
+                                    "ship_it": false,
+                                    "days since last comment": 737364
+                                },
+                                {
+                                    "reviewer": "mkirsch",
+                                    "ship_it": false,
+                                    "days since last comment": 737364
+                                }
+                            ]
+                        },
+                        {
+                            "developer": "mqiu",
+                            "url": "https://review-board.natinst.com/r/313902/",
+                            "summary": "<rev> [1/2] single source the error handling for cxp plugin's LV init() and close(): Add two utility macros in cxp.",
+                            "open issues": 0,
+                            "days since last change": 5,
+                            "owner reviews": [
+                                {
+                                    "reviewer": "mkirsch",
+                                    "ship_it": false,
+                                    "days since last comment": 737364
+                                }
+                            ]
+                        },
+                        {
+                            "developer": "huazhan",
+                            "url": "https://review-board.natinst.com/r/313914/",
+                            "summary": "<rev> Implement niDCPowerCXP_GetLiveMeasurements. This function has a parameter \"void* reserved\", which is difficult to code-gen based on currently implementation of mergers. There's no way to write a new merger to support this parameter, when we don't know the size of  \"void* reserved\".",
+                            "open issues": 0,
+                            "days since last change": 11,
+                            "owner reviews": [
+                                {
+                                    "reviewer": "thofler",
+                                    "ship_it": false,
+                                    "days since last comment": 737364
+                                },
+                                {
+                                    "reviewer": "mkirsch",
+                                    "ship_it": false,
+                                    "days since last comment": 737364
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "Submitted": {
+                    "count": 2,
+                    "details": [
+                        {
+                            "developer": "yijwu",
+                            "url": "https://review-board.natinst.com/r/313725/",
+                            "summary": "[Submitted] <rev> [2/4] Merge PinMap and MultiInstrumentPinMap into one class: retrofit niDigitalPB",
+                            "open issues": 0,
+                            "days since last change": 4,
+                            "owner reviews": [
+                                {
+                                    "reviewer": "mlopez",
+                                    "ship_it": true,
+                                    "days since last comment": 5
+                                }
+                            ]
+                        },
+                        {
+                            "developer": "yijwu",
+                            "url": "https://review-board.natinst.com/r/313727/",
+                            "summary": "[Submitted] <rev> [3/4] Merge PinMap and MultiInstrumentPinMap into one class: retrofit niDigitalCXP",
+                            "open issues": 0,
+                            "days since last change": 4,
+                            "owner reviews": [
+                                {
+                                    "reviewer": "mlopez",
+                                    "ship_it": true,
+                                    "days since last comment": 5
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "Unresolved": {
+                    "count": 1,
+                    "details": [
+                        {
+                            "developer": "yijwu",
+                            "url": "https://review-board.natinst.com/r/313729/",
+                            "summary": "[Submitted] <rev> [1/4] Merge PinMap and MultiInstrumentPinMap into one class: make pinmaptools::PinMap class able to work with pinmap with multiple instruments",
+                            "open issues": 1,
+                            "days since last change": 4,
+                            "owner reviews": [
+                                {
+                                    "reviewer": "mlopez",
+                                    "ship_it": true,
+                                    "days since last comment": 4
+                                }
+                            ]
+                        }
+                    ]
+                }
+            },
+            "8": {
+                "Submitted": {
+                    "count": 5,
+                    "details": [
+                        {
+                            "developer": "chyuan",
+                            "url": "https://review-board.natinst.com/r/314811/",
+                            "summary": "[Submitted] <rev> [3/3] Change to use a factory to create ImporterExporter when calling import/export functions of Session: Remove setImporterExporter() from Session.h.mako and Session.cpp.mako",
+                            "open issues": 0,
+                            "days since last change": 2,
+                            "owner reviews": [
+                                {
+                                    "reviewer": "mkirsch",
+                                    "ship_it": false,
+                                    "days since last comment": 737364
+                                }
+                            ]
+                        },
+                        {
+                            "developer": "chyuan",
+                            "url": "https://review-board.natinst.com/r/314809/",
+                            "summary": "[Submitted] <rev> [1/3] Change to use a factory to create ImporterExporter when calling import/export functions of Session: Add ImporterExporterFactory to niScopeCXP.",
+                            "open issues": 0,
+                            "days since last change": 2,
+                            "owner reviews": [
+                                {
+                                    "reviewer": "mkirsch",
+                                    "ship_it": false,
+                                    "days since last comment": 8
+                                }
+                            ]
+                        },
+                        {
+                            "developer": "chyuan",
+                            "url": "https://review-board.natinst.com/r/314810/",
+                            "summary": "[Submitted] <rev> [2/3] Change to use a factory to create ImporterExporter when calling import/export functions of Session: Add ImporterExporterFactory to nidcpowerCXP.",
+                            "open issues": 0,
+                            "days since last change": 2,
+                            "owner reviews": [
+                                {
+                                    "reviewer": "thofler",
+                                    "ship_it": false,
+                                    "days since last comment": 737364
+                                },
+                                {
+                                    "reviewer": "mkirsch",
+                                    "ship_it": false,
+                                    "days since last comment": 737364
+                                }
+                            ]
+                        },
+                        {
+                            "developer": "yuxwang",
+                            "url": "https://review-board.natinst.com/r/314813/",
+                            "summary": "[submitted]<rev> Clean up the implementation of HramCache private method \"cacheHramPins\".",
+                            "open issues": 0,
+                            "days since last change": 3,
+                            "owner reviews": [
+                                {
+                                    "reviewer": "mkirsch",
+                                    "ship_it": false,
+                                    "days since last comment": 737364
+                                },
+                                {
+                                    "reviewer": "mlopez",
+                                    "ship_it": false,
+                                    "days since last comment": 737364
+                                }
+                            ]
+                        },
+                        {
+                            "developer": "yuxwang",
+                            "url": "https://review-board.natinst.com/r/314807/",
+                            "summary": "[submitted]<rev> Clean up the implementation of HramCache public method \"initialize\".",
+                            "open issues": 0,
+                            "days since last change": 3,
+                            "owner reviews": [
+                                {
+                                    "reviewer": "mkirsch",
+                                    "ship_it": false,
+                                    "days since last comment": 737364
+                                },
+                                {
+                                    "reviewer": "mlopez",
+                                    "ship_it": false,
+                                    "days since last comment": 737364
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "Code Owner": {
+                    "count": 1,
+                    "details": [
+                        {
+                            "developer": "mqiu",
+                            "url": "https://review-board.natinst.com/r/314787/",
+                            "summary": "<rev>[2/2] Single source the error handling for cxp plugin's LV init() and close(): Retrofit niDigitalCXP, nidcpowerCXP, niScopeCXP to apply the new macros in cxp for LV entry points.",
+                            "open issues": 0,
+                            "days since last change": 8,
+                            "owner reviews": [
+                                {
+                                    "reviewer": "mkirsch",
+                                    "ship_it": false,
+                                    "days since last comment": 737364
+                                }
+                            ]
+                        }
+                    ]
+                }
+            },
+            "9": {
+                "Code Owner": {
+                    "count": 2,
+                    "details": [
+                        {
+                            "developer": "yuxwang",
+                            "url": "https://review-board.natinst.com/r/314613/",
+                            "summary": "<rev> [2/2] Add unit tests for HRAM handcoded functions: retrofit HramCache implementaion and tests because of the interface changes in Part1.",
+                            "open issues": 0,
+                            "days since last change": 2,
+                            "owner reviews": [
+                                {
+                                    "reviewer": "mkirsch",
+                                    "ship_it": false,
+                                    "days since last comment": 737364
+                                },
+                                {
+                                    "reviewer": "mlopez",
+                                    "ship_it": false,
+                                    "days since last comment": 737364
+                                }
+                            ]
+                        },
+                        {
+                            "developer": "yuxwang",
+                            "url": "https://review-board.natinst.com/r/314612/",
+                            "summary": "<rev> [1/2] Add unit tests for HRAM handcoded functions: refine the HRAM handcoded functions with unit tests.",
+                            "open issues": 0,
+                            "days since last change": 2,
+                            "owner reviews": [
+                                {
+                                    "reviewer": "mkirsch",
+                                    "ship_it": false,
+                                    "days since last comment": 737364
+                                },
+                                {
+                                    "reviewer": "mlopez",
+                                    "ship_it": false,
+                                    "days since last comment": 737364
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "Submitted": {
+                    "count": 1,
+                    "details": [
+                        {
+                            "developer": "yuxwang",
+                            "url": "https://review-board.natinst.com/r/314587/",
+                            "summary": "[submitted]<rev> To follow our code convention: rename \"siteNum\" to \"siteNumber\" and change the type to \"uint32_t\" in HramCache class.",
+                            "open issues": 0,
+                            "days since last change": 10,
+                            "owner reviews": [
+                                {
+                                    "reviewer": "mkirsch",
+                                    "ship_it": false,
+                                    "days since last comment": 737364
+                                },
+                                {
+                                    "reviewer": "mlopez",
+                                    "ship_it": true,
+                                    "days since last comment": 9
+                                }
+                            ]
+                        }
+                    ]
+                }
+            },
+            "7": {
+                "Code Owner": {
+                    "count": 1,
+                    "details": [
+                        {
+                            "developer": "zhwu",
+                            "url": "https://review-board.natinst.com/r/314994/",
+                            "summary": "<rev>Move DiscoverCurrentRanges and GetNextInstructionSequence from nidcpowerPrivate.h to nidcpowerLV.h, since these functions use lvdatacov, which should stay in nidcpowerLV.h.",
+                            "open issues": 0,
+                            "days since last change": 8,
+                            "owner reviews": [
+                                {
+                                    "reviewer": "thofler",
+                                    "ship_it": false,
+                                    "days since last comment": 737364
+                                },
+                                {
+                                    "reviewer": "mkirsch",
+                                    "ship_it": false,
+                                    "days since last comment": 737364
+                                }
+                            ]
+                        }
+                    ]
+                }
+            },
+            "39": {
+                "Submitted": {
+                    "count": 1,
+                    "details": [
+                        {
+                            "developer": "huazhan",
+                            "url": "https://review-board.natinst.com/r/310949/",
+                            "summary": "[Submitted] <rev>[Part 4/4] Enable out of process debugging for session created by initialize with independent channels: Add shared utility functions to handle remoteDebugOptionsString.",
+                            "open issues": 0,
+                            "days since last change": 8,
+                            "owner reviews": [
+                                {
+                                    "reviewer": "thofler",
+                                    "ship_it": false,
+                                    "days since last comment": 737364
+                                },
+                                {
+                                    "reviewer": "mkirsch",
+                                    "ship_it": false,
+                                    "days since last comment": 737364
+                                }
+                            ]
+                        }
+                    ]
+                }
+            },
+            "10": {
+                "Submitted": {
+                    "count": 1,
+                    "details": [
+                        {
+                            "developer": "yuxwang",
+                            "url": "https://review-board.natinst.com/r/314256/",
+                            "summary": "[submitted]<rev> [2/2] Clean up HramCache interface: retrofit HramCache implementation because of interface changes in Part1.",
+                            "open issues": 0,
+                            "days since last change": 11,
+                            "owner reviews": [
+                                {
+                                    "reviewer": "mkirsch",
+                                    "ship_it": false,
+                                    "days since last comment": 737364
+                                },
+                                {
+                                    "reviewer": "mlopez",
+                                    "ship_it": false,
+                                    "days since last comment": 9
+                                }
+                            ]
+                        }
+                    ]
+                }
+            }
         }
     }
+
 
 }
