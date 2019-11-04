@@ -109,7 +109,7 @@ class ReviewView(object):
         self.data = new_data
 
     def get_html(self):
-        return html.Div(
+        return [html.Div(
             children=[
                 html.Div(
                     children=[
@@ -130,7 +130,7 @@ class ReviewView(object):
                 )
             ],
             className='p-3 mb-2 bg-white text-dark'
-        )
+        )]
 
 
 if __name__ == '__main__':
