@@ -74,15 +74,14 @@ class ReviewView(object):
 
     def get_stacked_bar(self, key):
         data = self.data[key]
-        x_max = max(list(map(int, data.keys())))
-        x_names = [f'{x} day' + ('s' if x > 1 else '') for x in range(1, x_max + 1)]
-        bars = defaultdict(lambda: [0] * x_max)
-        hover_text = defaultdict(lambda: [''] * x_max)
+        num_bars = max(list(map(int, data.keys()))) + 1
+        x_names = list(range(0, num_bars))
+        bars = defaultdict(lambda: [0] * num_bars)
+        hover_text = defaultdict(lambda: [''] * num_bars)
         for day, categories in data.items():
             for category, v in categories.items():
-                bars[category][int(day) - 1] = int(v['count'])
-                hover_text[category][int(day) - 1] = '<br>'.join([self._brief_detail_string(d) for d in v['details']])
-        colors = self._map_colors(bars.keys())
+                bars[category][int(day)] = int(v['count'])
+                hover_text[category][int(day)] = '<br>'.join([self._brief_detail_string(d) for d in v['details']])
         duration_fig = go.Figure(
             data=[
                 go.Bar(
@@ -101,6 +100,7 @@ class ReviewView(object):
         # Change the bar mode
         duration_fig.update_layout(
             title= key,
+            xaxis_title='days',
             barmode='stack'
         )
         return duration_fig
@@ -137,5 +137,5 @@ if __name__ == '__main__':
     with open(r'..\data\dashboard_data.json') as f:
         data = json.load(f)
     r = ReviewView(data['review'])
-    r.get_pie('Days Since Posted').write_html('test.html', auto_open=True)
+    r.get_pie('Unresolved Reviews').write_html('test.html', auto_open=True)
     r.get_stacked_bar('Days Since Posted').write_html('test.html', auto_open=True)
