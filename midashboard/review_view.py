@@ -13,7 +13,7 @@ class ReviewView(object):
 
     def __init__(self, data):
         self.data = data
-        self.default_layout = dict(height=250, margin=dict(l=10, t=20, b=0, r=10))
+        self.default_layout = dict(height=250, margin=dict(l=10, t=30, b=10, r=10))
         # colors matching: unresolved, internal, owner, submitted
         self.category_colors = {
             'Unresolved': 'OrangeRed',
@@ -137,4 +137,5 @@ if __name__ == '__main__':
     with open(r'..\data\dashboard_data.json') as f:
         data = json.load(f)
     r = ReviewView(data['review'])
+    r.get_pie('Days Since Posted').write_html('test.html', auto_open=True)
     r.get_stacked_bar('Days Since Posted').write_html('test.html', auto_open=True)
