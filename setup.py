@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="midashboard-ysomebody",
-    version="1.0.0dev7",
+    version="1.0.0dev8",
     author="ysomebody",
     author_email="ysomebody@163.com",
     description="MI dashboard",
