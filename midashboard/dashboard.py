@@ -34,9 +34,9 @@ class Dashboard:
             for build_config in self.config['build']
             ]
         review_config = self.config['review']
-        review_data = analyze_open_reviews(review_config['code_owners'],
-                                           review_config['devgroup'],
-                                           review_config['ignore_tags'])
+        review_data = analyze_open_reviews(code_owners=review_config['code_owners'],
+                                           dev_group=review_config['devgroup'],
+                                           ignore_tags=review_config['ignore_tags'])
         return {
             'title'      : self.config['title'],
             'update_time': datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
