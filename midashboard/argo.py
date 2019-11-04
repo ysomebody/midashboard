@@ -39,6 +39,7 @@ class FtpFolder:
             time = file_info.time
             if (latest_time is None) or (time > latest_time):
                 latest_folder_info = file_info
+                latest_time = time
 
         return latest_folder_info
 
@@ -106,7 +107,7 @@ def get_installer_info(argo_path):
 
 if __name__ == '__main__':
 
-        installer_path = "\\\\argo\\ni\\nipkg\\feeds\\ni-d\\ni-digital"
+        installer_path = "\\\\argo\\ni\\nipkg\\feeds\\ni-d\\ni-digital\\19.1.0"
 
         installer = get_installer_info(installer_path)
         print(installer)
