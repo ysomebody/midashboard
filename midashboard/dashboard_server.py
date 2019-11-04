@@ -63,7 +63,7 @@ class DashboardServer:
                 self.review.refresh(dashboard_data['review'])
                 content = self.review.get_html()
             content.append(
-                html.H1(children=f'Last Update: {minutes_since_last_update} munites ago.', style={'textAlign': 'center'}))
+                html.H1(children=f'Last Update: {minutes_since_last_update} minutes ago.', style={'textAlign': 'center'}))
             return content
 
     def run(self):
